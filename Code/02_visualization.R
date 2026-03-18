@@ -142,6 +142,21 @@ pairs(sentinel)
 #plotRGB()
 plotRGB(sentinel, 3, 2, 4, stretch="hist") #il parametro stretch=hist aumenta il contrasto dei valori medi
 plotRGB(sentinel, 3, 2, 4, stretch="lin") #il parametro stretch=lin aumenta il range
+###
+#indice spettrale: unire insieme più bande con lunghezze d'onda diverse
+#vedi file: 03_spectral_indices.R
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
