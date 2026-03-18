@@ -1,0 +1,76 @@
+# indice 
+library(terra)
+library(imageRy)
+library(viridis)
+
+#listing files:
+im.list()
+#file: matogrosso_l5_1992219_lrg.jpg ---> l5 è un satellite del programma landsat 5
+#importing data
+mato1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
+#nb: il nord  e il sud sono invertiti --> uso flip
+mato1992 <- flip(mato1992)
+#l1=nir, l2=red, l3=green --> metto l'infrarosso nel rosso
+im.plotRGB(mato1992, r=1,g=2, b=3)   #gran parte del papesaggio occupato da foresta (in rosso)
+#l'acqua assorbe tutto l'infrarosso, quindi risulterebbe nera, ma essendo che sotto c'è il suolo viene riflesso da esso.
+im.plotRGB(mato1992, r=2,g=1, b=3)   #infrarosso nel verde
+im.plotRGB(mato1992, r=2,g=3, b=1)   #infrarosso nel blu, per auemntare la percezione del suolo nudo (in giallo)
+
+# Exercise: import the image from 2006
+mato2006 <- im.import("matogrosso_ast_2006209_lrg.jpg")
+mato2006 <- flip(mato2006)
+im.plotRGB(mato2006, 1, 2, 3)
+# make a multiframe with the two images, one beside the other
+im.multiframe(1,2)
+im.plotRGB(mato1992, 1, 2, 3)
+im.plotRGB(mato2006, 1, 2, 3)     #si nota come le aree verdi siano ridotte
+im.multiframe(1,2) #stessa cosa ma con focus sul suolo nudo
+im.plotRGB(mato1992, r=2,g=3, b=1) 
+im.plotRGB(mato2006, 3, 2, 1)
+
+#indice per misurare la biomassa --> utilizzare varie bande composte insieme.
+#Una pianta ha un elevata riflettanza nell'infrarosso e bassa nel rosso (assorbita dai cloroplasti per la fotosintesi)
+# es. una pianta ha Nir =100 e Red=0
+# Difference vegetation index
+# DVI = NIR-RED --> 100-0 =0
+#es. se pianta sta morendo la riflettanza nel nir diminuisce e aumenta quella nel red --> DVI= 40-10= 30
+#DVI ---l1=nir, l2=red, l3=green 
+dvi1992 <- mato1992[[1]] -  mato1992[[2]]       # due parentesi quadre servono ad indicare di usare la banda 
+dvi2006 <- mato2006[[1]] -  mato2006[[2]] 
+
+plot(dvi1992)
+plot(dvi2006)
+# uso viridis
+plot(dvi1992, col=inferno(100))
+plot(dvi2006, col=inferno(100))
+
+#1. Risoluzizone SPETTRALE = numero di bande
+#2. Risoluzizone SPAZIALE = dimensione pixel
+#3. Risoluzizone RADIOMETRICA: numero di bit
+
+# 1bit = 2^1 info possibili (0 o 1); 2bit = 2^2; 3bit= 2^3 --> ecc.
+#8bit = 256 = 1 byte
+# DVI with different radiometric resolution
+#8 bit -> 0-255
+# DVI= NIR-red = 255-0 = 255 --> max DVI
+# NIR - red = 0-255 = -255   --> min DVI
+#se uso immagini con numero di bit diversi non sono comparabili
+#Per comparare immagini con risoluzione radiometrica diversa uso l'NDVI (dvi standardizzato)
+# NDVI = (NIR- red)/(NIR + red)
+ndvi1992 <- (255-0)/(255+0) = 1      --> max NDVI
+ndvi2006 <- (0-255)/(0+255) = -1   --> min NDVI
+
+im-multiframe(2,2)
+plot(dvi1992)
+plot(ndvi1992)
+plot(dvi2006
+plot(ndvi2006)
+
+#OPPURE: esiste una funzione che calcola direttamente l'indice --> im.dvi() e im.ndvi()
+dvi1992 <- im.dvi(mato1992, nir=1, r=2)
+dvi2006 <- im.dvi(mato2006, 1, 2)
+#
+
+
+
+
