@@ -46,7 +46,8 @@ plot(dvi2006, col=inferno(100))
 
 #1. Risoluzizone SPETTRALE = numero di bande
 #2. Risoluzizone SPAZIALE = dimensione pixel
-#3. Risoluzizone RADIOMETRICA: numero di bit
+#3. Risoluzizone RADIOMETRICA = numero di bit
+#4. Risoluzione TEMPORALE = numero di immagini usate contemporaneamente --> analisi multitemporali
 
 # 1bit = 2^1 info possibili (0 o 1); 2bit = 2^2; 3bit= 2^3 --> ecc.
 #8bit = 256 = 1 byte
