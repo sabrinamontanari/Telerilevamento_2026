@@ -1,0 +1,16 @@
+# My functions! #definisco gli argoemnti della funzione 
+#parentesi graffe: AltGr + shift + [ o ]
+
+# SOMMA
+somma <- function(x,y){
+      z=x+y
+      return(z)
+      }
+    #quindi posso scrivere:
+    somma(73,837)
+
+# DIFFERENZA
+differnce <- function(x,y){
+      z=x-y
+      return(z)
+      }
