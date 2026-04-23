@@ -2,6 +2,9 @@
 
 library(terra)
 library(imageRy)
+library(ggplot2)
+library(patchwork)
+
 # set wd per immagine scaricata sul computer ******
 setwd("~/Desktop")
 getwd()
@@ -71,6 +74,61 @@ tabout <- data.frame(
   perc1992= c(83,17)    #valori risultati da perc1992 e perc 2006
   perc2006= c(45,55)
 )
+
+### CREO GRAFICO CON GGPLOT2
+#inserisco i pacchetti library(ggplot2) e library(patchwork)
+#ggplot(dato di entrata, estetica ovverso definizione della x e y) --> aes = aestetics
+#sulla x metto la classe della mia tabella (forest o human), sulla y metto la percentuale (perc1992 e perc2006), colore= colora in modo diverso le due classi
+#devo specificare a ggplot che tipo di grafico fare (aggiungo un "+" e )
+
+# 1992
+ggplot(tabout, eas(x=class, y=perc1992, color=class)) +      #structure
+    geom_bar(stat="identity", fill="white") +        #grafico a barre; nelle parentesi inserisco (la statistica usata, colore interno delle barre)
+    ylim(c(0,100))              #NB: le y hanno scala diversa quindi la sistemo
+
+# 2006
+ggplot(tabout, eas(x=class, y=perc2006, color=class)) +
+    geom_bar(stat="identity", fill="white") +
+    ylim(c(0,100))
+
+### USO PATCHWORK - associo il grafico ad un oggetto
+p1 <- ggplot(tabout, eas(x=class, y=perc1992, color=class)) + 
+    geom_bar(stat="identity", fill="white") + 
+    ylim(c(0,100)) +
+    theme(legend.position="none")      #per evitare ripetizioni tolgo la legenda ad uno dei due grafici
+
+p2 <- ggplot(tabout, eas(x=class, y=perc2006, color=class)) +
+    geom_bar(stat="identity", fill="white") +
+    ylim(c(0,100)) +
+    theme(legend.position="none")
+  # theme_minimal() --> sfongo bianco
+  # theme_dark() --> sfondo nero
+
+p1 + p2       # li visualizzo insieme
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
