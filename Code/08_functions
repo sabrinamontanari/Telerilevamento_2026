@@ -2,7 +2,7 @@
 #parentesi graffe: AltGr + shift + [ o ]
 
 # SOMMA
-somma <- function(x,y){
+somma <- function(x,y) {
       z=x+y
       return(z)
       }
@@ -10,7 +10,73 @@ somma <- function(x,y){
     somma(73,837)
 
 # DIFFERENZA
-differnce <- function(x,y){
+differnce <- function(x,y) {
       z=x-y
       return(z)
       }
+
+# par --> creo una funzione che sostituisca par() --> mf(numero righe, numero colonne)
+mf <- function(nx,ny) {
+      par(mfrow=c(nx,ny))
+      }
+            #su R: sent <- im.import("immagine")
+            #mf(1,2)
+            #library(terra)
+            #plot(sent[1])
+            #plot(sent[2])
+# stessa cosa ma con un default nella funzione:
+mf2 <- function(nx=1,ny=2) {
+      par(mfrow=c(nx,ny))
+      }
+            #su R: mf2()
+            #plot(sent[1])
+            #plot(sent[2])
+
+# STRUTTURA IF-ELSE: è una condizione
+#distinzione numeri pari e dispari
+positivo <- function(x) {                               #su R: positivo(numero incognito)
+      if(x>0) {
+      "Questo numero è positivo"
+      }
+      else if(x<0){
+      "Questo numero è negativo"}
+      else {                              #oppure else(x=0)
+      "Zero non è positivo nè negativo"
+      }
+}
+
+# STRUTTURA FOR detto anche loop o ciclo for
+loop <- function() {                                      #su R: loop()
+      for(i in 1:50) {       #per i che va da uno a cinquanta, stampa tutti gli i
+      print(i)
+      }
+}
+
+#
+loop <- function() {     
+      for(i in 1:50) {       #per i che va da uno a cinquanta, fai l'operazione i*7
+      op <- i*7      
+      print(op)
+      }
+}
+
+#esportare il risultato su un file che viene salvato sul setwd
+setwd("Desktop")
+sink("output.txt")
+loop2()
+sink()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
