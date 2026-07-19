@@ -10,7 +10,7 @@ In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'ar
 - Post-incendio: Aprile 2020 (valutazione del danno subito subito dopo lo spegnimento ufficiale)
 - Un anno dopo: Aprile 2021 (analisi della risposta ecologica e della ripresa della vegetazione a distanza di un anno)
 ##
-# Area di studio
+ > Area di studio
 <p align="center">
 <img width="325" height="254" alt="Blue mountains" src="https://github.com/user-attachments/assets/adfca7c9-cc35-4ce6-80ab-3ce7cb29457e" />
 </p>
