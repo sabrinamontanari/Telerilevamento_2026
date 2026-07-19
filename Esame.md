@@ -14,3 +14,5 @@ In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'ar
 <p align="center">
 <img width="325" height="254" alt="Blue mountains" src="https://github.com/user-attachments/assets/adfca7c9-cc35-4ce6-80ab-3ce7cb29457e" />
 </p>
+
+
