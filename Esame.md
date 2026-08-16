@@ -14,6 +14,7 @@ In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'ar
 ##
 > Area di studio
 <p align="center">
-  <img width="325" height="254" alt="incendio attivo" src="incendioBO.png" />
+  <img width="1121" height="833" alt="incendioBO" src="https://github.com/user-attachments/assets/49ae1811-d01d-4e68-b92c-dad0593efe6b" />
+" />
 </p>
 
