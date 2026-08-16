@@ -14,7 +14,7 @@ In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'ar
 ##
  > Area di studio
 <p align="center">
-<img width="325" height="254" alt="Blue mountains" src="" />
+<img width="325" height="254" alt="incendioBO.png" src="C:\Teleril_GEE_exports" />
 </p>
 
 
