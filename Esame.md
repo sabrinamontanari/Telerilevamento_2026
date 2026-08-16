@@ -12,9 +12,8 @@ In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'ar
 - Post-incendio: Aprile 2026 (valutazione del danno subito subito dopo lo spegnimento ufficiale)
 
 ##
- > Area di studio
+> Area di studio
 <p align="center">
-<img width="325" height="254" alt="incendio attivo" src="C:\Teleril_GEE_exports\incendioBO.png" />
+  <img width="325" height="254" alt="incendio attivo" src="incendioBO.png" />
 </p>
-
 
