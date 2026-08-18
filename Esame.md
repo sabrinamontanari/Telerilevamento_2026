@@ -61,7 +61,7 @@ plot(post)
  <img src="img/POST.png" width="400">
 </p>
 
-### Visualizzo le immagini in RGB (colori reali)
+### Visualizzazione delle immagini in RGB (colori reali)
 Per farlo utilizzo la funzione `im.plotRGB()` del pacchetto `imageRy`
 ```r
 im.multiframe(1,2) # visualizza due grafici sulla stessa riga
@@ -71,6 +71,17 @@ dev.off() # chiude il pannello di visualizzazione dell'immagine
 ```
 <p align="center">
  <img src="img/RGB.png" width="500">
+</p>
+
+### Visualizzazione in Falso Colore Infrarosso (NIR-Red-Green)
+Per evidenziare visivamente l'impatto dell'incendio sulla copertura vegetale, è stata generata una composizione in falso colore
+```r
+im.multiframe(1,2) 
+im.plotRGB(pre, r=4, g=3, b=2, title="pre")
+im.plotRGB(post, r=4, g=3, b=2, title="post")
+```
+<p align="center">
+ <img src="img/Falsecolors.png" width="500">
 </p>
 
 ### Analisi esplorativa
