@@ -17,9 +17,9 @@ In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'ar
 </p>
 
 ## Sono stati calcolati i seguenti indici vegetazionali:
-NDVI (Normalized Difference Vegetation Index) – salute della vegetazione
-DVI (Difference Vegetation Index) – quantità assoluta di vegetazione
-NBR (Normalized Burn Ratio) – aree bruciate
+- NDVI (Normalized Difference Vegetation Index) – salute della vegetazione
+- DVI (Difference Vegetation Index) – quantità assoluta di vegetazione
+- NBR (Normalized Burn Ratio) – aree bruciate
 
 > Area di studio
 <p align="center">
@@ -32,11 +32,31 @@ Quantificare l'impatto dell'incendio sulla vegetazione subito l'evento.
 Le immagini satellitari sono state scaricate da [**Google Earth Engine**](https://earthengine.google.com/), utilizzando il codice Java script fornito durante il corso e in seguito modificato per ottenere l'area e le date di interesse.
 ## Installazione dei pacchetti
 Una volta impostata la working directory, sono stati installati i pacchetti in R necessari alle analisi:
-'''r
+```r
 setwd("C:\\Teleril_GEE_exports")
 getwd()
 list.files()
+# Pacchetti
 library(terra) # Per lavorare con raster e immagini satellitari
 library()
 ecc.
-'''
+```
+## Importazione delle immagini
+Per importare i dati è stata utilizzata la funzione `rast()` del pacchetto `terra` e le immagini sono state rinominate:
+```r
+pre <- rast("sentinel2_median_2026_pre.tif")
+plot(pre)
+```
+<p align="center">
+  <img src="img/PRE.png" width="800">
+</p>
+>Immagine prima dell'incendio a 4 bande (B2, B3, B4, B8)
+
+```r
+post <- rast("sentinel2_median_2026_post.tif")
+plot(post)
+```
+<p align="center">
+  <img src="img/POST.png" width="800">
+</p>
+> Immagine dopo l'incendio a 4 bande (B2, B3, B4, B8)
