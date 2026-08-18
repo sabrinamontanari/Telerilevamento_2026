@@ -15,16 +15,17 @@ In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'ar
 <p align="center">
 <img width="30%" alt="incendioBO" src="https://github.com/user-attachments/assets/74e98bb7-a760-4ce8-baec-09a144c7f67d" />
 </p>
-#
-Vengono calcolati i seguenti indici vegetazionali:
+
+## Sono stati calcolati i seguenti indici vegetazionali:
 NDVI (Normalized Difference Vegetation Index) – salute della vegetazione
 DVI (Difference Vegetation Index) – quantità assoluta di vegetazione
 NBR (Normalized Burn Ratio) – aree bruciate
-##
-Area di studio
+
+## Area di studio
 <p align="center">
 <img width="50%" alt="area di studio" src="<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/f9847adb-cdef-4659-bee0-9206bdc8a92f" />
 </p>
+
 # 2. Obiettivo
 Quantificare l'impatto dell'incendio sulla vegetazione subito l'evento.
 # 3. Metodologia
