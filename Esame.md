@@ -70,7 +70,7 @@ im.plotRGB(post, r=3, g=2, b=1, title="post-indendio")
 dev.off() # chiude il pannello di visualizzazione dell'immagine
 ```
 <p align="center">
- <img src="img/RGB.png" width="400">
+ <img src="img/RGB.png" width="600">
 </p>
 
 ### Visualizzazione e confronto delle singole bande spettrali (B2, B3, B4, B8) 
@@ -96,3 +96,20 @@ dev.off()
 <p align="center">
  <img src="img/Bande.png" width="900">
 </p>
+
+>**Commento:**
+>* **Spettro visibile (B2, B3, B4):** Mostra valori di riflettanza generalmente bassi sia prima che dopo l'evento, con variazioni minime ed evidenza limitata del danno.
+>* **Vicino Infrarosso (B8 NIR):** Rileva in modo netto l'impatto dell'incendio. Nella fase *Pre-event* la vegetazione sana presenta valori di riflettanza elevati (aree chiare/gialle), mentre nella fase *Post-event* si osserva una diminuzione della riflettanza (area scura/viola nell'area centrale del Monte Morrone), causato dalla perdita di biomassa fotosinteticamente attiva e dalla presenza di cenere/suolo bruciato.
+
+# 4. Calcolo degli inidici vegetazionali  🌿
+
+## Indice DVI
+l'indice DVI calcola la differenza algebrica tra la riflettanza nel Vicino Infrarosso (NIR) e la riflettanza nel Rosso (RED).
+ $$
+ DVI = NIR - RED
+ $$
+In Sentinel-2 corrisponde a DVI = B8 - B4
+
+```r
+
+```
