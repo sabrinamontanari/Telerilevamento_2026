@@ -70,11 +70,12 @@ im.plotRGB(post, r=3, g=2, b=1, title="post-indendio")
 dev.off() # chiude il pannello di visualizzazione dell'immagine
 ```
 <p align="center">
- <img src="img/RGB.png" width="600">
+ <img src="img/RGB.png" width="500">
 </p>
 
-### Visualizzazione e confronto delle singole bande spettrali (B2, B3, B4, B8) 
-utilizzo il pacchetto `viridis` e la scala di colori `magma` per analizzare le variazioni di riflettanza pre e post-incendio.
+### Analisi esplorativa
+**Visualizzazione e confronto delle singole bande spettrali (B2, B3, B4, B8)**
+Utilizzo il pacchetto `viridis` e la scala di colori `magma` per analizzare le variazioni di riflettanza pre e post-incendio.
 ```r
 png("Bande.png", width = 2200, height = 1200, res = 220) # salvare il file direttamente su disco impostandone risoluzione e dimensioni
 im.multiframe(2, 4)
