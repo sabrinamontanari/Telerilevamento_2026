@@ -93,5 +93,5 @@ plot(post[[4]], col = magma(100), main = "Post - NIR (B8)")
 dev.off()
 ```
 <p align="center">
- <img src="img/Bande.png" width="400">
+ <img src="img/Bande.png" width="900">
 </p>
