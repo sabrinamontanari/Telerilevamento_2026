@@ -23,7 +23,7 @@ NBR (Normalized Burn Ratio) – aree bruciate
 
 > Area di studio
 <p align="center">
-<img width="421" height="248" alt="areastudio" src="https://github.com/user-attachments/assets/fb3d46e7-a064-457f-93a5-9e52fa23ec3e" />
+AGGIUNGI AREA STUDIO
 </p>
 
 # 2. Obiettivo
