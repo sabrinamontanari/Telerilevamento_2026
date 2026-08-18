@@ -30,7 +30,7 @@ AGGIUNGI AREA STUDIO
 Quantificare l'impatto dell'incendio sulla vegetazione subito l'evento.
 # 3. Metodologia
 Le immagini satellitari sono state scaricate da [**Google Earth Engine**](https://earthengine.google.com/), utilizzando il codice Java script fornito durante il corso e in seguito modificato per ottenere l'area e le date di interesse.
-## Installazione dei pacchetti
+### Installazione dei pacchetti
 Una volta impostata la working directory, sono stati installati i pacchetti in R necessari alle analisi:
 ```r
 setwd("C:\\Teleril_GEE_exports")
@@ -41,22 +41,26 @@ library(terra) # Per lavorare con raster e immagini satellitari
 library()
 ecc.
 ```
-## Importazione delle immagini
+### Importazione delle immagini
 Per importare i dati è stata utilizzata la funzione `rast()` del pacchetto `terra` e le immagini sono state rinominate:
 ```r
 pre <- rast("sentinel2_median_2026_pre.tif")
 plot(pre)
 ```
 <p align="center">
- <img src="img/PRE.png" width="500">
+ <img src="img/PRE.png" width="400">
 </p>
->Immagine prima dell'incendio a 4 bande (B2, B3, B4, B8)
+ > Immagine prima dell'incendio nelle 4 bande (B2, B3, B4, B8)
 
 ```r
 post <- rast("sentinel2_median_2026_post.tif")
 plot(post)
 ```
 <p align="center">
- <img src="img/POST.png" width="500">
+ <img src="img/POST.png" width="400">
 </p>
-> Immagine dopo l'incendio a 4 bande (B2, B3, B4, B8)
+ > Immagine dopo l'incendio nelle 4 bande (B2, B3, B4, B8)
+
+### Visualizzo le immagini in RGB (colori reali)
+Per farlo utilizzo la funzione `im.plotRGB()` del pacchetto `imageRy`
+
