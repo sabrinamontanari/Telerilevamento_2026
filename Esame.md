@@ -39,6 +39,7 @@ list.files()
 library(terra) # Per lavorare con raster e immagini satellitari
 library(imageRy)
 library(viridis)
+library()
 ```
 ### Importazione delle immagini
 Per importare i dati è stata utilizzata la funzione `rast()` del pacchetto `terra` e le immagini sono state rinominate:
@@ -46,37 +47,38 @@ Per importare i dati è stata utilizzata la funzione `rast()` del pacchetto `ter
 pre <- rast("sentinel2_median_2026_pre.tif")
 plot(pre)
 ```
+> Immagine prima dell'incendio nelle 4 bande (B2, B3, B4, B8)
 <p align="center">
  <img src="img/PRE.png" width="400">
 </p>
- > Immagine prima dell'incendio nelle 4 bande (B2, B3, B4, B8)
 
 ```r
 post <- rast("sentinel2_median_2026_post.tif")
 plot(post)
 ```
+> Immagine dopo dell'incendio nelle 4 bande (B2, B3, B4, B8)
 <p align="center">
  <img src="img/POST.png" width="400">
 </p>
- > Immagine dopo l'incendio nelle 4 bande (B2, B3, B4, B8)
 
 ### Visualizzo le immagini in RGB (colori reali)
 Per farlo utilizzo la funzione `im.plotRGB()` del pacchetto `imageRy`
 ```r
-im.multiframe(1,2)
+im.multiframe(1,2) # visualizza due grafici sulla stessa riga
 im.plotRGB(pre, r=3, g=2, b=1, title="pre-indendio")
 im.plotRGB(post, r=3, g=2, b=1, title="post-indendio")
-dev.off() # chiude iul pannello du visualizzazione dell'immagine
+dev.off() # chiude il pannello di visualizzazione dell'immagine
 ```
 <p align="center">
  <img src="img/RGB.png" width="400">
 </p>
-Dalle immagini in RGB non è possibile osservare nessuna variazione significativa della vegetazione.
 
 ### Visualizzazione e confronto delle singole bande spettrali (B2, B3, B4, B8) 
 utilizzo il pacchetto `viridis` e la scala di colori `magma` per analizzare le variazioni di riflettanza pre e post-incendio.
 ```r
+png("Bande.png", width = 2200, height = 1200, res = 220) # salvare il file direttamente su disco impostandone risoluzione e dimensioni
 im.multiframe(2, 4)
+par(mar = c(2.5, 2.5, 2, 0.5)) # riduce i margini esterni attorno a ciascun grafico
 
 # PRE-INCENDIO
 plot(pre[[1]], col = magma(100), main = "Pre - Blue (B2)", cex.main = 0.8) 
