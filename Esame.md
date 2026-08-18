@@ -48,7 +48,7 @@ pre <- rast("sentinel2_median_2026_pre.tif")
 plot(pre)
 ```
 <p align="center">
-  <img src="PRE.png" width="800">
+IMM PRE
 </p>
 >Immagine prima dell'incendio a 4 bande (B2, B3, B4, B8)
 
@@ -57,6 +57,6 @@ post <- rast("sentinel2_median_2026_post.tif")
 plot(post)
 ```
 <p align="center">
-  <img src="POST.png" width="800">
+IMMAGINE POST
 </p>
 > Immagine dopo l'incendio a 4 bande (B2, B3, B4, B8)
