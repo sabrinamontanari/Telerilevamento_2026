@@ -61,7 +61,8 @@ plot(post)
  <img src="img/POST.png" width="400">
 </p>
 
-### Visualizzazione delle immagini in RGB (colori reali)
+### Analisi esplorativa
+### - Visualizzazione delle immagini in RGB (colori reali)
 Per farlo utilizzo la funzione `im.plotRGB()` del pacchetto `imageRy`
 ```r
 im.multiframe(1,2) # visualizza due grafici sulla stessa riga
@@ -73,7 +74,7 @@ dev.off() # chiude il pannello di visualizzazione dell'immagine
  <img src="img/RGB.png" width="500">
 </p>
 
-### Visualizzazione in Falso Colore Infrarosso (NIR-Red-Green)
+### - Visualizzazione in Falso Colore Infrarosso (NIR-Red-Green)
 Per evidenziare visivamente l'impatto dell'incendio sulla copertura vegetale, è stata generata una composizione in falso colore
 ```r
 im.multiframe(1,2) 
@@ -84,8 +85,8 @@ im.plotRGB(post, r=4, g=3, b=2, title="post")
  <img src="img/Falsecolors.png" width="500">
 </p>
 
-### Analisi esplorativa
-**Visualizzazione e confronto delle singole bande spettrali (B2, B3, B4, B8)**
+
+### - Visualizzazione e confronto delle singole bande spettrali (B2, B3, B4, B8)
 Utilizzo il pacchetto `viridis` e la scala di colori `magma` per analizzare le variazioni di riflettanza pre e post-incendio.
 ```r
 png("Bande.png", width = 2200, height = 1200, res = 220) # salvare il file direttamente su disco impostandone risoluzione e dimensioni
@@ -110,8 +111,8 @@ dev.off()
 </p>
 
 >**Commento:**
->* **Spettro visibile (B2, B3, B4):** Mostra valori di riflettanza generalmente bassi sia prima che dopo l'evento, con variazioni minime ed evidenza limitata del danno.
->* **Vicino Infrarosso (B8 NIR):** Rileva in modo netto l'impatto dell'incendio. Nella fase *Pre-event* la vegetazione sana presenta valori di riflettanza elevati (aree chiare/gialle), mentre nella fase *Post-event* si osserva una diminuzione della riflettanza (area scura/viola nell'area centrale del Monte Morrone), causato dalla perdita di biomassa fotosinteticamente attiva e dalla presenza di cenere/suolo bruciato.
+>* Spettro visibile (B2, B3, B4): mostra valori di riflettanza generalmente bassi sia prima che dopo l'evento, con variazioni minime ed evidenza limitata del danno.
+>* Vicino Infrarosso (B8 NIR): rileva in modo netto l'impatto dell'incendio. Nella fase *Pre-event* la vegetazione sana presenta valori di riflettanza elevati (aree chiare/gialle), mentre nella fase *Post-event* si osserva una diminuzione della riflettanza (area scura/viola nell'area centrale del Monte Morrone), causato dalla perdita di biomassa fotosinteticamente attiva e dalla presenza di cenere/suolo bruciato.
 
 # 4. Calcolo degli inidici vegetazionali  🌿
 
