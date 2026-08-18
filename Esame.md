@@ -9,7 +9,7 @@ In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'ar
 - Post-incendio: 15 Settembre 2017 – 15 Ottobre 2017 (situazione subito dopo l'estinzione del rogo)
 
 <p align="center">
-<img width="4608" height="3456" alt="montemorrone" src="https://github.com/user-attachments/assets/d812cf03-f1c3-4c2a-8060-c6f2dce43df0" />
+<img width="3000" alt="montemorrone" src="https://github.com/user-attachments/assets/d812cf03-f1c3-4c2a-8060-c6f2dce43df0" />
 </p>
 
 ## Sono stati calcolati i seguenti indici vegetazionali:
