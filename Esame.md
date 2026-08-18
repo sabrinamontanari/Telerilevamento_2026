@@ -63,4 +63,14 @@ plot(post)
 
 ### Visualizzo le immagini in RGB (colori reali)
 Per farlo utilizzo la funzione `im.plotRGB()` del pacchetto `imageRy`
+```r
+im.multiframe(1,2)
+im.plotRGB(pre, r=3, g=2, b=1, title="pre-indendio")
+im.plotRGB(post, r=3, g=2, b=1, title="post-indendio")
+dev.off() # chiude iul pannello du visualizzazione dell'immagine
+```
+<p align="center">
+ <img src="img/RGB.png" width="400">
+</p>
+Dalle immagini in RGB non è possibile osservare nessuna variazione significativa della vegetazione.
 
