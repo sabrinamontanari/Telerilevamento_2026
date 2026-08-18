@@ -6,7 +6,7 @@ L'incendio boschivo divampato nell'estate 2017, tra fine agosto e inizio settemb
 
  > Monte Morrone
 <p align="center">
-<img alt="montemorrone" src="https://github.com/user-attachments/assets/d812cf03-f1c3-4c2a-8060-c6f2dce43df0" width=500 />
+ <img src="img/montemorrone.jpg" width="700">
 </p>
 
 In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'area dell'Appennino centrale, attraverso immagini satellitari **Sentinel-2** in due momenti temporali:
@@ -15,7 +15,7 @@ In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'ar
 
 > Area di studio (Parco della Maiella)
 <p align="center">
-<img width="642" height="376" alt="areastudio" src="https://github.com/user-attachments/assets/90995e32-a64d-4f0a-99b1-b1f744e172d7" />
+ <img src="img/areastudio.png" width="700">
 </p>
 
 # 2. Obiettivo
