@@ -80,18 +80,18 @@ utilizzo il pacchetto `viridis` e la scala di colori `magma` per analizzare le v
 im.multiframe(2, 4)
 
 # PRE-INCENDIO
-plot(pre[[1]], col = magma(100), main = "Pre - Blue (B2)") 
-plot(pre[[2]], col = magma(100), main = "Pre - Green (B3)")
-plot(pre[[3]], col = magma(100), main = "Pre - Red (B4)")
-plot(pre[[4]], col = magma(100), main = "Pre - NIR (B8)")
-# POST-INCENDIO
-plot(post[[1]], col = magma(100), main = "Post - Blue (B2)")
-plot(post[[2]], col = magma(100), main = "Post - Green (B3)")
-plot(post[[3]], col = magma(100), main = "Post - Red (B4)")
-plot(post[[4]], col = magma(100), main = "Post - NIR (B8)")
+plot(pre[[1]], col = magma(100), main = "Pre - Blue (B2)", cex.main = 0.8) 
+plot(pre[[2]], col = magma(100), main = "Pre - Green (B3)", cex.main = 0.8)
+plot(pre[[3]], col = magma(100), main = "Pre - Red (B4)", cex.main = 0.8)
+plot(pre[[4]], col = magma(100), main = "Pre - NIR (B8)", cex.main = 0.8)
 
+# POST-INCENDIO
+plot(post[[1]], col = magma(100), main = "Post - Blue (B2)", cex.main = 0.8)
+plot(post[[2]], col = magma(100), main = "Post - Green (B3)", cex.main = 0.8)
+plot(post[[3]], col = magma(100), main = "Post - Red (B4)", cex.main = 0.8)
+plot(post[[4]], col = magma(100), main = "Post - NIR (B8)", cex.main = 0.8)
 dev.off()
 ```
 <p align="center">
- <img src="img/Bande.png" width="700">
+ <img src="img/Bande.png" width="900">
 </p>
