@@ -1,5 +1,5 @@
 # INCENDIO DI ALTO RENO TERME (BO)
-### esame di Telerilevamento geo-ecologico in R - 2026
+### Esame di Telerilevamento Geo-Ecologico in R - 2026
 #### Sabrina Montanari
 # 1. Introduzione
 L'incendio boschivo di Alto Reno Terme è divampato la sera di Pasqua, il 5 aprile 2026, colpendo duramente la località di Biagioni, nella zona di Granaglione, al confine tra le province di Bologna e Pistoia. Il rogo ha interessato complessivamente 70 ettari dell'Appennino tosco-emiliano.
@@ -39,7 +39,7 @@ list.files()
 # Pacchetti
 library(terra) # Per lavorare con raster e immagini satellitari
 library(imageRy)
-ecc.
+library(viridis)
 ```
 ### Importazione delle immagini
 Per importare i dati è stata utilizzata la funzione `rast()` del pacchetto `terra` e le immagini sono state rinominate:
@@ -74,3 +74,24 @@ dev.off() # chiude iul pannello du visualizzazione dell'immagine
 </p>
 Dalle immagini in RGB non è possibile osservare nessuna variazione significativa della vegetazione.
 
+### Visualizzazione e confronto delle singole bande spettrali (B2, B3, B4, B8) 
+utilizzo il pacchetto `viridis` e la scala di colori `magma` per analizzare le variazioni di riflettanza pre e post-incendio.
+```r
+im.multiframe(2, 4)
+
+# PRE-INCENDIO
+plot(pre[[1]], col = magma(100), main = "Pre - Blue (B2)") 
+plot(pre[[2]], col = magma(100), main = "Pre - Green (B3)")
+plot(pre[[3]], col = magma(100), main = "Pre - Red (B4)")
+plot(pre[[4]], col = magma(100), main = "Pre - NIR (B8)")
+# POST-INCENDIO
+plot(post[[1]], col = magma(100), main = "Post - Blue (B2)")
+plot(post[[2]], col = magma(100), main = "Post - Green (B3)")
+plot(post[[3]], col = magma(100), main = "Post - Red (B4)")
+plot(post[[4]], col = magma(100), main = "Post - NIR (B8)")
+
+dev.off()
+```
+<p align="center">
+ <img src="img/Bande.png" width="400">
+</p>
