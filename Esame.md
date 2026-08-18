@@ -12,7 +12,6 @@ Inoltre, il fumo denso e la rapidità del fronte di fuoco hanno causato la perdi
 In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'area dell'Appennino tosco-emiliano, attraverso immagini satellitari Sentinel-2 in due momenti temporali:
 - Pre-incendio: Marzo 2026 (situazione della vegetazione prima dell'inizio della stagione dei roghi)
 - Post-incendio: Aprile 2026 (valutazione del danno subito subito dopo lo spegnimento ufficiale)
-#
 <p align="center">
 <img width="30%" alt="incendioBO" src="https://github.com/user-attachments/assets/74e98bb7-a760-4ce8-baec-09a144c7f67d" />
 </p>
@@ -27,4 +26,16 @@ Area di studio
 <img width="50%" alt="area di studio" src="<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/f9847adb-cdef-4659-bee0-9206bdc8a92f" />
 </p>
 # 2. Obiettivo
-Quantificare l'impatto
+Quantificare l'impatto dell'incendio sulla vegetazione subito l'evento.
+# 3. Metodologia
+Le immagini satellitari sono state scaricate da [**Google Earth Engine**](https://earthengine.google.com/), utilizzando il codice Java script fornito durante il corso e in seguito modificato per ottenere l'area e le date di interesse.
+## Installazione dei pacchetti
+Una volta impostata la working directory, sono stati installati i pacchetti in R necessari alle analisi:
+'''r
+setwd("C:\\Teleril_GEE_exports")
+getwd()
+list.files()
+library(terra) # Per lavorare con raster e immagini satellitari
+library()
+ecc.
+'''
