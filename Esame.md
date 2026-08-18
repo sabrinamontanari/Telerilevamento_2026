@@ -4,26 +4,29 @@
 # 1. Introduzione
 L'incendio boschivo divampato nell'estate 2017, tra fine agosto e inizio settembre, ha colpito il **Monte Morrone**, situato all'interno del **Parco Nazionale della Majella** in Abruzzo. L'evento ha distrutto oltre 2.000 ettari di copertura forestale, danneggiando gravemente popolamenti di pino nero e faggete di elevato valore ecologico. 
 
+ > Monte Morrone
+<p align="center">
+<img alt="montemorrone" src="https://github.com/user-attachments/assets/d812cf03-f1c3-4c2a-8060-c6f2dce43df0" width=500 />
+</p>
+
 In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'area dell'Appennino centrale, attraverso immagini satellitari **Sentinel-2** in due momenti temporali:
 - Pre-incendio: 1° Luglio 2017 – 15 Agosto 2017 (condizione della vegetazione precedente all'incendio)
 - Post-incendio: 15 Settembre 2017 – 15 Ottobre 2017 (situazione subito dopo l'estinzione del rogo)
 
+> Area di studio (Parco della Maiella)
 <p align="center">
-<img width="3000" alt="montemorrone" src="https://github.com/user-attachments/assets/d812cf03-f1c3-4c2a-8060-c6f2dce43df0" />
+<img width="642" height="376" alt="areastudio" src="https://github.com/user-attachments/assets/90995e32-a64d-4f0a-99b1-b1f744e172d7" />
 </p>
+
+# 2. Obiettivo
+Analizzare e quantificare le variazioni spettrali indotte dall'incendio del Monte Morrone sulla copertura vegetale, confrontando le acquisizioni satellitari Sentinel-2 prima e dopo l'evento.
+* **Stima della severità ($dNDVI$):** Calcolare la differenza multitemporale $dNDVI = NDVI_{pre} - NDVI_{post}$ per mappare con precisione il perimetro del bruciato e classificare i livelli di danno subiti dall'ecosistema forestale.
 
 ## Sono stati calcolati i seguenti indici vegetazionali:
 - NDVI (Normalized Difference Vegetation Index) – salute della vegetazione
 - DVI (Difference Vegetation Index) – quantità assoluta di vegetazione
 - NBR (Normalized Burn Ratio) – aree bruciate
 
-> Area di studio (Monte Morrone)
-<p align="center">
-<img width="540" height="282" alt="areastudio" src="https://github.com/user-attachments/assets/6ef533a8-61b7-4556-a0e0-ea44dfec6930" />
-</p>
-
-# 2. Obiettivo
-Quantificare l'impatto dell'incendio sulla vegetazione subito l'evento.
 # 3. Metodologia
 Le immagini satellitari sono state scaricate da [**Google Earth Engine**](https://earthengine.google.com/), utilizzando il codice Java script fornito durante il corso e in seguito modificato per ottenere l'area e le date di interesse.
 ### Installazione dei pacchetti
