@@ -117,12 +117,27 @@ dev.off()
 # 4. Calcolo degli inidici vegetazionali  🌿
 
 ## Indice DVI
-l'indice DVI calcola la differenza algebrica tra la riflettanza nel Vicino Infrarosso (NIR) e la riflettanza nel Rosso (RED).
- $$
- DVI = NIR - RED
- $$
-In Sentinel-2 corrisponde a DVI = B8 - B4
+L'indice DVI calcola la differenza algebrica tra la riflettanza nel Vicino Infrarosso (NIR) e la riflettanza nel Rosso (RED).
+>
+**DVI = NIR - RED**
+>
+In Sentinel-2 corrisponde a **DVI = B8 - B4**
+>
+Sono stati calcolati i DVI della fase pre e post incendio:
+>
+```r
+dvi_pre <- pre[[4]] - pre[[3]]   # B8(NIR) - B4(Red)
+dvi_post <- post[[4]] - post[[3]]   # B8 (NIR) - B4 (Red)
+```
+Poi è stata calcolata la variazione multitemporale, il **dDVI**
 
 ```r
-
+dDVI <- dvi_pre - dvi_post # variazione multitemporale (dDVI)
+```
+Visualizzo i plot con la palette `viridis` per i DVI pre e post incendio e la palette `magma` per il dDVI
+```r
+im.multiframe(1,3)
+plot(dvi_pre, col = viridis(100), main = "DVI Pre-incendio")
+plot(dvi_post, col = viridis(100), main = "DVI Post-incendio")
+plot(dDVI, col = magma(100), main = "Differenza dDVI (Pre - Post)")
 ```
