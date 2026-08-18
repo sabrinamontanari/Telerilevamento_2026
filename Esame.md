@@ -129,15 +129,21 @@ Sono stati calcolati i DVI della fase pre e post incendio:
 dvi_pre <- pre[[4]] - pre[[3]]   # B8(NIR) - B4(Red)
 dvi_post <- post[[4]] - post[[3]]   # B8 (NIR) - B4 (Red)
 ```
-Poi è stata calcolata la variazione multitemporale, il **dDVI**
+Poi è stata calcolata la variazione multitemporale, il **dDVI**:
 
 ```r
 dDVI <- dvi_pre - dvi_post # variazione multitemporale (dDVI)
 ```
-Visualizzo i plot con la palette `viridis` per i DVI pre e post incendio e la palette `magma` per il dDVI
+> **Commento:**
+> I valori ottenuti dall'analisi (da -0.45 a +0.62) descrivono precisi processi ecologici, dove i valori positivi elevati identificano in modo univoco le superfici maggiormente danneggiate dall'evento, mentre i valori negativi documentano il fisiologico sviluppo e la rigenerazione della vegetazione non colpita.
+
+Visualizzazione dei plot con la palette `viridis` per i DVI pre e post incendio e la palette `magma` per il dDVI
 ```r
 im.multiframe(1,3)
 plot(dvi_pre, col = viridis(100), main = "DVI Pre-incendio")
 plot(dvi_post, col = viridis(100), main = "DVI Post-incendio")
 plot(dDVI, col = magma(100), main = "Differenza dDVI (Pre - Post)")
 ```
+<p align="center">
+ <img src="img/DVI.png" width="600">
+</p>
