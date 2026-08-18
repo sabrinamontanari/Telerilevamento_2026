@@ -38,7 +38,7 @@ getwd()
 list.files()
 # Pacchetti
 library(terra) # Per lavorare con raster e immagini satellitari
-library()
+library(imageRy)
 ecc.
 ```
 ### Importazione delle immagini
