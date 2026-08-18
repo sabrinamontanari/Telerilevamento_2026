@@ -1,17 +1,13 @@
-# INCENDIO DI ALTO RENO TERME (BO)
+# INCENDIO SUL MONTE MORRONE - Parco Nazionale della Majella (Abruzzo)
 ### Esame di Telerilevamento Geo-Ecologico in R - 2026
 #### Sabrina Montanari
 # 1. Introduzione
-L'incendio boschivo di Alto Reno Terme è divampato la sera di Pasqua, il 5 aprile 2026, colpendo duramente la località di Biagioni, nella zona di Granaglione, al confine tra le province di Bologna e Pistoia. Il rogo ha interessato complessivamente 70 ettari dell'Appennino tosco-emiliano.
+L'incendio boschivo divampato nell'estate 2017, tra fine agosto e inizio settembre, ha colpito il **Monte Morrone**, situato all'interno del **Parco Nazionale della Majella** in Abruzzo. L'evento ha distrutto oltre 2.000 ettari di copertura forestale, danneggiando gravemente popolamenti di pino nero e faggete di elevato valore ecologico. 
 
-I danni al patrimonio naturalistico sono stati rilevanti, interessando boschi cedui e vegetazione montana, senza fortunatamente colpire centri abitati. Il rogo ha provocato un forte impatto ecologico sull'ecosistema. La distruzione del manto vegetale in queste aree, infatti, espone il terreno a un forte rischio di erosione del suolo e a potenziali fenomeni di dissesto idrogeologico in caso di piogge intense.
+In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'area dell'Appennino centrale, attraverso immagini satellitari **Sentinel-2** in due momenti temporali:
+- Pre-incendio: 1° Luglio 2017 – 15 Agosto 2017 (condizione della vegetazione precedente all'incendio)
+- Post-incendio: 15 Settembre 2017 – 15 Ottobre 2017 (situazione subito dopo l'estinzione del rogo)
 
-L'evento ha avuto inoltre un forte impatto sulla fauna selvtica in quanto è avvenutto in una stagione cruciale per la fauna appenninica, coincidente con i periodi di nidificazione dell'avifauna e il risveglio letargico di molte specie.
-Inoltre, il fumo denso e la rapidità del fronte di fuoco hanno causato la perdita di microfauna, insetti impollinatori e piccoli roditori. Gli esemplari più grandi (caprioli, cinghiali, lupi) hanno subito lo spostamento forzato dal loro habitat naturale.
-
-In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'area dell'Appennino tosco-emiliano, attraverso immagini satellitari Sentinel-2 in due momenti temporali:
-- Pre-incendio: Marzo 2026 (situazione della vegetazione prima dell'inizio della stagione dei roghi)
-- Post-incendio: Aprile 2026 (valutazione del danno subito subito dopo lo spegnimento ufficiale)
 <p align="center">
 <img width="30%" alt="incendioBO" src="https://github.com/user-attachments/assets/74e98bb7-a760-4ce8-baec-09a144c7f67d" />
 </p>
@@ -21,9 +17,9 @@ In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'ar
 - DVI (Difference Vegetation Index) – quantità assoluta di vegetazione
 - NBR (Normalized Burn Ratio) – aree bruciate
 
-> Area di studio
+> Area di studio (Monte Morrone)
 <p align="center">
-AGGIUNGI AREA STUDIO
+<img width="540" height="282" alt="areastudio" src="https://github.com/user-attachments/assets/6ef533a8-61b7-4556-a0e0-ea44dfec6930" />
 </p>
 
 # 2. Obiettivo
