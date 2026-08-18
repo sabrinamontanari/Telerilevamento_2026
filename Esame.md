@@ -21,9 +21,9 @@ NDVI (Normalized Difference Vegetation Index) – salute della vegetazione
 DVI (Difference Vegetation Index) – quantità assoluta di vegetazione
 NBR (Normalized Burn Ratio) – aree bruciate
 
-## Area di studio
+> Area di studio
 <p align="center">
-<img width="50%" alt="area di studio" src="<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/f9847adb-cdef-4659-bee0-9206bdc8a92f" />
+<img width="421" height="248" alt="areastudio" src="https://github.com/user-attachments/assets/fb3d46e7-a064-457f-93a5-9e52fa23ec3e" />
 </p>
 
 # 2. Obiettivo
