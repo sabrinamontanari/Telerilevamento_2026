@@ -140,9 +140,10 @@ dDVI <- dvi_pre - dvi_post # variazione multitemporale (dDVI)
 Visualizzazione dei plot con la palette `viridis` per i DVI pre e post incendio e la palette `magma` per il dDVI
 ```r
 im.multiframe(1,3)
-plot(dvi_pre, col = viridis(100), main = "DVI Pre-incendio")
-plot(dvi_post, col = viridis(100), main = "DVI Post-incendio")
-plot(dDVI, col = magma(100), main = "Differenza dDVI (Pre - Post)")
+par(mar = c(3, 3, 3, 1))
+plot(dvi_pre, col = viridis(100), main = "DVI Pre")
+plot(dvi_post, col = viridis(100), main = "DVI Post")
+plot(dDVI, col = magma(100), main = "dDVI (Pre - Post)")
 ```
 <p align="center">
  <img src="img/DVI.png" width="600">
