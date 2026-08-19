@@ -149,3 +149,5 @@ plot(dDVI, col = magma(100), main = "dDVI (Pre - Post)")
  <img src="img/DVI.png" width="800">
 </p>
 
+> **Commento:**
+> I valori prossimi al massimo (+0.61) delimitano la cicatrice d'incendio sul Monte Morrone; i valori vicini allo zero evidenziano la vegetazione intatta, mentre i valori negativi segnalano la normale crescita stagionale delle aree agricole e dei pascoli circostanti.
