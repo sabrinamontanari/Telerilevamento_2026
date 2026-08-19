@@ -146,6 +146,6 @@ plot(dvi_post, col = viridis(100), main = "DVI Post")
 plot(dDVI, col = magma(100), main = "dDVI (Pre - Post)")
 ```
 <p align="center">
-
+ <img src="img/DVI.png" width="800">
 </p>
 
