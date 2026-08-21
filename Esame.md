@@ -116,25 +116,22 @@ dev.off()
 # 4. Calcolo degli inidici vegetazionali  🌿
 
 ## Indice DVI
-L'indice DVI calcola la differenza algebrica tra la riflettanza nel Vicino Infrarosso (NIR) e la riflettanza nel Rosso (RED).
+L'indice spettrale DVI ((*Difference Vegetation Index*) permette di stimare la quantità e lo stato di salute della biomassa vegetale. Esso calcola la differenza algebrica tra la riflettanza nel Vicino Infrarosso (B8, NIR) e la riflettanza nel Rosso (B4, RED).
+> Alti valori di DVI sono indici di una vegetazione sana e densa (alta riflettanza dell'infrarosso)
 >
 **DVI = NIR - RED**
 >
-In Sentinel-2 corrisponde a **DVI = B8 - B4**
->
 Sono stati calcolati i DVI della fase pre e post incendio:
->
 ```r
-dvi_pre <- pre[[4]] - pre[[3]]   # B8(NIR) - B4(Red)
-dvi_post <- post[[4]] - post[[3]]   # B8 (NIR) - B4 (Red)
+dvi_pre <- pre[[4]] - pre[[3]]      # min value: -0.069; max value: 0.774
+dvi_post <- post[[4]] - post[[3]]   # min value: -0.062; max value: 1.023
 ```
-Poi è stata calcolata la variazione multitemporale, il **dDVI**:
-
+Successivamente è stata calcolata la variazione multitemporale, il **dDVI**:
 ```r
-dDVI <- dvi_pre - dvi_post # variazione multitemporale (dDVI)
+dDVI <- dvi_pre - dvi_post   # min value: -0.396; max value: 0.606 
 ```
 > **Commento:**
-> L'area presenta una netta eterogeneità: mentre la vegetazione indisturbata ha continuato la sua crescita (portando il DVI massimo oltre 1.0), le zone interessate dal fuoco hanno subito un crollo del segnale spettrale, evidenziato da valori di dDVI fortemente positivi (fino a +0.61), che permettono di delimitare l'area bruciata.
+> L'area presenta una netta eterogeneità: mentre la vegetazione indisturbata ha continuato la sua crescita (portando il DVI massimo oltre 1.0), le zone interessate dal fuoco hanno subito un crollo del segnale spettrale, evidenziato da valori di dDVI fortemente positivi (fino a +0.61).
 
 Visualizzazione dei plot con la palette `viridis` per i DVI pre e post incendio e la palette `magma` per il dDVI
 ```r
@@ -144,12 +141,13 @@ plot(dvi_pre, col = viridis(100), main = "DVI Pre")
 plot(dvi_post, col = viridis(100), main = "DVI Post")
 plot(dDVI, col = magma(100), main = "dDVI (Pre - Post)")
 ```
-
 <p align="center">
  <img src="img/DVI.png" width="800">
 </p>
+
 > **Commento:**
-> La mappa appare ora molto più scura (blu/viola) al centro. Il viola scuro e il blu indicano una drastica riduzione del DVI (valori vicini allo zero o negativi), corrispondente alla perdita di biomassa vegetale e alla presenza di cenere e suolo bruciato. Le aree rimaste verdi/gialle ai margini indicano la vegetazione scampata al fuoco.
+> * La mappa *Post-incendio* appare molto più scura al centro; il viola scuro e il blu indicano una drastica riduzione del DVI corrispondente alla perdita di biomassa vegetale e alla presenza di cenere e suolo bruciato.
+> * Nella mappa del *dDVI*, le aree gialle/chiare (+0.4/+0.6) mostrano dove il DVI è crollato tra il prima e il dopo, permettendo di perimetrare meglio le area bruciate (cicatrice dell'incendio).
 
 
 ## Indice NDVI
