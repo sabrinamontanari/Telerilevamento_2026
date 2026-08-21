@@ -37,7 +37,7 @@ list.files()
 library(terra) # Per lavorare con raster e immagini satellitari
 library(imageRy)
 library(viridis)
-library()
+library(ggplot2)
 ```
 ### Importazione delle immagini
 Per importare i dati è stata utilizzata la funzione `rast()` del pacchetto `terra` e le immagini sono state rinominate:
@@ -63,7 +63,7 @@ plot(post)
 ### - Visualizzazione delle immagini in RGB (colori reali)
 Per farlo utilizzo la funzione `im.plotRGB()` del pacchetto `imageRy`
 ```r
-im.multiframe(1,2) # visualizza due grafici sulla stessa riga
+im.multiframe(1, 2) # visualizza due grafici sulla stessa riga
 im.plotRGB(pre, r=3, g=2, b=1, title="pre-indendio")
 im.plotRGB(post, r=3, g=2, b=1, title="post-indendio")
 dev.off() # chiude il pannello di visualizzazione dell'immagine
@@ -75,7 +75,7 @@ dev.off() # chiude il pannello di visualizzazione dell'immagine
 ### - Visualizzazione in Falso Colore Infrarosso (NIR-Red-Green)
 Per evidenziare visivamente l'impatto dell'incendio sulla copertura vegetale, è stata generata una composizione in falso colore
 ```r
-im.multiframe(1,2) 
+im.multiframe(1, 2) 
 im.plotRGB(pre, r=4, g=3, b=2, title="pre")
 im.plotRGB(post, r=4, g=3, b=2, title="post")
 ```
@@ -135,7 +135,7 @@ dDVI <- dvi_pre - dvi_post   # min value: -0.396; max value: 0.606
 
 Visualizzazione dei plot con la palette `viridis` per i DVI pre e post incendio e la palette `magma` per il dDVI
 ```r
-im.multiframe(1,3)
+im.multiframe(1, 3)
 par(mar = c(3, 3, 3, 1))
 plot(dvi_pre, col = viridis(100), main = "DVI Pre")
 plot(dvi_post, col = viridis(100), main = "DVI Post")
@@ -157,8 +157,8 @@ NDVI = NIR-RED / NIR+RED
 >
 Per il calcolo dell'NDVI pre e post incendio è stata usata la funzione `im.ndvi()` del pacchetto `imageRy`
 ```r
-ndvi_pre <- im.ndvi(pre,4,3)
-ndvi_post <- im.ndvi(post,4,3)
+ndvi_pre <- im.ndvi(pre, 4, 3)
+ndvi_post <- im.ndvi(post, 4, 3)
 ```
 **Stima della severità ($dNDVI$):** Calcolare la differenza multitemporale $dNDVI = NDVI_{pre} - NDVI_{post}$ per mappare con precisione il perimetro del bruciato e classificare i livelli di danno subiti dall'ecosistema forestale.
 ```r
