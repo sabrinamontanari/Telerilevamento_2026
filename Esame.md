@@ -81,6 +81,8 @@ im.multiframe(1,2)
 im.plotRGB(pre, r=4, g=3, b=2, title="pre")
 im.plotRGB(post, r=4, g=3, b=2, title="post")
 ```
+> **Commento:**
+> Dopo l'incendio la vegetazione (in rosso) è ridotta sul versante ovest del monte, maggiormente colpito dal rogo.
 <p align="center">
  <img src="img/Falsecolors.png" width="500">
 </p>
@@ -111,8 +113,7 @@ dev.off()
 </p>
 
 >**Commento:**
->* Spettro visibile (B2, B3, B4): mostra valori di riflettanza generalmente bassi sia prima che dopo l'evento, con variazioni minime ed evidenza limitata del danno.
->* Vicino Infrarosso (B8 NIR): rileva in modo netto l'impatto dell'incendio. Nella fase *Pre-event* la vegetazione sana presenta valori di riflettanza elevati (aree chiare/gialle), mentre nella fase *Post-event* si osserva una diminuzione della riflettanza (area scura/viola nell'area centrale del Monte Morrone), causato dalla perdita di biomassa fotosinteticamente attiva e dalla presenza di cenere/suolo bruciato.
+> Nel grafico del Vicino Infrarosso (B8, NIR) viene rilevato in modo netto l'impatto dell'incendio. Nella fase *Pre-event* la vegetazione sana presenta alti valori di riflettanza (aree chiare/gialle), mentre nella fase *Post-event* si osserva una diminuzione della riflettanza (area scura/viola nell'area centrale del Monte Morrone), causato dalla perdita di biomassa fotosinteticamente attiva e dalla presenza di cenere/suolo bruciato.
 
 # 4. Calcolo degli inidici vegetazionali  🌿
 
@@ -135,7 +136,7 @@ Poi è stata calcolata la variazione multitemporale, il **dDVI**:
 dDVI <- dvi_pre - dvi_post # variazione multitemporale (dDVI)
 ```
 > **Commento:**
-> I valori ottenuti dall'analisi (da -0.45 a +0.62) descrivono precisi processi ecologici, dove i valori positivi elevati identificano in modo univoco le superfici maggiormente danneggiate dall'evento, mentre i valori negativi documentano il fisiologico sviluppo e la rigenerazione della vegetazione non colpita.
+> L'area presenta una netta eterogeneità: mentre la vegetazione indisturbata ha continuato la sua crescita (portando il DVI massimo oltre 1.0), le zone interessate dal fuoco hanno subito un crollo del segnale spettrale, evidenziato da valori di dDVI fortemente positivi (fino a +0.61), che permettono di delimitare l'area bruciata.
 
 Visualizzazione dei plot con la palette `viridis` per i DVI pre e post incendio e la palette `magma` per il dDVI
 ```r
@@ -145,9 +146,9 @@ plot(dvi_pre, col = viridis(100), main = "DVI Pre")
 plot(dvi_post, col = viridis(100), main = "DVI Post")
 plot(dDVI, col = magma(100), main = "dDVI (Pre - Post)")
 ```
+
 <p align="center">
  <img src="img/DVI.png" width="800">
 </p>
-
 > **Commento:**
-> I valori prossimi al massimo (+0.61) delimitano la cicatrice d'incendio sul Monte Morrone; i valori vicini allo zero evidenziano la vegetazione intatta, mentre i valori negativi segnalano la normale crescita stagionale delle aree agricole e dei pascoli circostanti.
+> La mappa appare ora molto più scura (blu/viola) al centro. Il viola scuro e il blu indicano una drastica riduzione del DVI (valori vicini allo zero o negativi), corrispondente alla perdita di biomassa vegetale e alla presenza di cenere e suolo bruciato. Le aree rimaste verdi/gialle ai margini indicano la vegetazione scampata al fuoco.
