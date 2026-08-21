@@ -164,3 +164,14 @@ ndvi_post <- im.ndvi(post, 4, 3)
 ```r
 dNDVI <- ndvi_pre - ndvi_post
 ```
+Visualizzazione dei plot con la palette `viridis` per i NDVI pre e post incendio e la palette `magma` per il dNDVI
+```r
+im.multiframe(1, 3)
+par(mar = c(3, 3, 3, 1))
+plot(ndvi_pre, col = viridis(100), main = "NDVI Pre")
+plot(ndvi_post, col = viridis(100), main = "NDVI Post")
+plot(dNDVI, col = magma(100), main = "dNDVI (Pre - Post)")
+```
+<p align="center">
+ <img src="img/NDVI.png" width="800">
+</p>
