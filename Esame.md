@@ -1,8 +1,8 @@
-# INCENDIO SUL MONTE MORRONE - Parco Nazionale della Majella (Abruzzo)
+# INCENDIO SUL MONTE MORRONE - Parco Nazionale della Maiella (Abruzzo)
 ### Esame di Telerilevamento Geo-Ecologico in R - 2026
 #### Sabrina Montanari
 # 1. Introduzione
-L'incendio boschivo divampato nell'estate 2017, tra fine agosto e inizio settembre, ha colpito il **Monte Morrone**, situato all'interno del **Parco Nazionale della Majella** in Abruzzo. L'evento ha distrutto oltre 2.000 ettari di copertura forestale, danneggiando gravemente popolamenti di pino nero e faggete di elevato valore ecologico. 
+L'incendio boschivo divampato nell'estate 2017, tra fine agosto e inizio settembre, ha colpito il **Monte Morrone**, situato all'interno del **Parco Nazionale della Maiella** in Abruzzo. L'evento ha distrutto oltre 2.000 ettari di copertura forestale, danneggiando gravemente popolamenti di pino nero e faggete di elevato valore ecologico. 
 
  > Monte Morrone
 <p align="center">
@@ -10,21 +10,19 @@ L'incendio boschivo divampato nell'estate 2017, tra fine agosto e inizio settemb
 </p>
 
 In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'area dell'Appennino centrale, attraverso immagini satellitari **Sentinel-2** in due momenti temporali:
-- Pre-incendio: 1° Luglio 2017 – 15 Agosto 2017 (condizione della vegetazione precedente all'incendio)
+- Pre-incendio: 1 Luglio 2017 – 15 Agosto 2017 (condizione della vegetazione precedente all'incendio)
 - Post-incendio: 15 Settembre 2017 – 15 Ottobre 2017 (situazione subito dopo l'estinzione del rogo)
 
-> Area di studio (Parco della Maiella)
+> Area di studio (Monte Morrone - Parco della Maiella)
 <p align="center">
  <img src="img/areastudio.png" width="700">
 </p>
 
 # 2. Obiettivo
 Analizzare e quantificare le variazioni spettrali indotte dall'incendio del Monte Morrone sulla copertura vegetale, confrontando le acquisizioni satellitari Sentinel-2 prima e dopo l'evento.
-* **Stima della severità ($dNDVI$):** Calcolare la differenza multitemporale $dNDVI = NDVI_{pre} - NDVI_{post}$ per mappare con precisione il perimetro del bruciato e classificare i livelli di danno subiti dall'ecosistema forestale.
-
 ## Sono stati calcolati i seguenti indici vegetazionali:
-- NDVI (Normalized Difference Vegetation Index) – salute della vegetazione
 - DVI (Difference Vegetation Index) – quantità assoluta di vegetazione
+- NDVI (Normalized Difference Vegetation Index) – salute della vegetazione
 - NBR (Normalized Burn Ratio) – aree bruciate
 
 # 3. Metodologia
@@ -152,3 +150,8 @@ plot(dDVI, col = magma(100), main = "dDVI (Pre - Post)")
 </p>
 > **Commento:**
 > La mappa appare ora molto più scura (blu/viola) al centro. Il viola scuro e il blu indicano una drastica riduzione del DVI (valori vicini allo zero o negativi), corrispondente alla perdita di biomassa vegetale e alla presenza di cenere e suolo bruciato. Le aree rimaste verdi/gialle ai margini indicano la vegetazione scampata al fuoco.
+
+
+## Indice NDVI
+
+**Stima della severità ($dNDVI$):** Calcolare la differenza multitemporale $dNDVI = NDVI_{pre} - NDVI_{post}$ per mappare con precisione il perimetro del bruciato e classificare i livelli di danno subiti dall'ecosistema forestale.
