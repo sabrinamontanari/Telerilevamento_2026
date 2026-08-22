@@ -155,6 +155,7 @@ plot(dDVI, col = magma(100), main = "dDVI (Pre - Post)")
 ## Indice NDVI
 L'indice NDVI (*Normalized Difference Vegetation Index*) rappresenta un indice DVI normalizzato, che riduce i disturbi dovuti a variazioni di illuminazione solare, ombre topografiche e pendenze del terreno (valori compresi tra -1 e +1).
 > Alti valori di NDVI sono indici di una vegetazione sana; valori negativi o tendenti a zero indicano una vegetazione distrutta o suolo nudo.
+> 
 $$
 NDVI = \frac{NIR - RED}{NIR + RED}
 $$
