@@ -159,12 +159,12 @@ $$
 NDVI = \frac{NIR - RED}{NIR + RED}
 $$
 >
-Per il calcolo dell'NDVI pre e post incendio è stata usata la funzione `im.ndvi()` del pacchetto `imageRy`
+Per il calcolo dell'NDVI pre e post incendio è stata usata la funzione `im.ndvi()` del pacchetto `imageRy`:
 ```r
 ndvi_pre <- im.ndvi(pre, 4, 3)
 ndvi_post <- im.ndvi(post, 4, 3)
 ```
-**Stima della severità ($dNDVI$):** Calcolare la differenza multitemporale $dNDVI = NDVI_{pre} - NDVI_{post}$ per mappare con precisione il perimetro del bruciato e classificare i livelli di danno subiti dall'ecosistema forestale.
+In seguito è stata calcolata la variazione multitemporale, $dNDVI = NDVI_{pre} - NDVI_{post}$, per mappare con precisione il perimetro del bruciato e classificare i livelli di danno subiti dall'ecosistema forestale:
 ```r
 dNDVI <- ndvi_pre - ndvi_post
 ```
