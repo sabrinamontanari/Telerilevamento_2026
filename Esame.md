@@ -154,7 +154,7 @@ plot(dDVI, col = magma(100), main = "dDVI (Pre - Post)")
 
 ## Indice NDVI
 L'indice NDVI (*Normalized Difference Vegetation Index*) rappresenta un indice DVI normalizzato, che riduce i disturbi dovuti a variazioni di illuminazione solare, ombre topografiche e pendenze del terreno (valori compresi tra -1 e +1).
->
+> Alti valori di NDVI sono indici di una vegetazione sana; valori negativi o tendenti a zero indicano una vegetazione distrutta o suolo nudo.
 $$
 NDVI = \frac{NIR - RED}{NIR + RED}
 $$
@@ -179,3 +179,6 @@ plot(dNDVI, col = magma(100), main = "dNDVI (Pre - Post)")
 <p align="center">
  <img src="img/NDVI.png" width="800">
 </p>
+>**Commento:**
+> Nella mappa *Post-incendio* si nota un drastico abbassamento dei valori, compresi tra **0.0 e 0.3** (verde scuro, blu/viola) rispetto alla mappa *Pre-incendio*.
+> La mappa *dNDVI* mostra le aree non colpite dal fuoco in colori scuri (valori intorno allo zero), mentre l'intera cicatrice dell'incendio risalta con tonalità chiare e accese (**dNDVI > +0.4**).
