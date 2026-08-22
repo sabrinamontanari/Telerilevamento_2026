@@ -193,7 +193,7 @@ Per la classificazione *non supervisionata* è stata utilizzata la funzione `im.
 ndvi_pre_c <- im.classify(ndvi_pre, num_clusters = 2, seed = 1) # suddivisione dei pixel in due gruppi
 ndvi_post_c <- im.classify(ndvi_post, num_clusters = 2, seed = 1)
 ```
-Le due classi sono state rinominate:
+Le due classi sono state rinominate attraverso la funzione `levels()` :
 ```r
 levels(ndvi_pre_c) <- data.frame(
   value = c(1, 2),
@@ -212,3 +212,6 @@ plot(ndvi_pre_c, main="NDVI Pre",  col=c("#B85B14", "#2D6A4F"))
 plot(ndvi_post_c, main="NDVI Post",  col=c("#B85B14", "#2D6A4F"))
 dev.off()
 ```
+<p align="center">
+ <img src="img/class.png" width="800">
+</p>
