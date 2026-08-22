@@ -111,7 +111,7 @@ dev.off()
 </p>
 
 >**Commento:**
-> Nel grafico del Vicino Infrarosso (B8, NIR) viene rilevato in modo netto l'impatto dell'incendio. Nella fase *Pre-event* la vegetazione sana presenta alti valori di riflettanza (aree chiare/gialle), mentre nella fase *Post-event* si osserva una diminuzione della riflettanza (area scura/viola nell'area centrale del Monte Morrone), causato dalla perdita di biomassa fotosinteticamente attiva e dalla presenza di cenere/suolo bruciato.
+> Nel grafico del Vicino Infrarosso (B8, NIR) viene rilevato in modo netto l'impatto dell'incendio. Nella fase *Pre-incendio* la vegetazione sana presenta alti valori di riflettanza (aree chiare/gialle), mentre nella fase *Post-incendio* si osserva una diminuzione della riflettanza (area scura/viola), causato dalla perdita di biomassa fotosinteticamente attiva e dalla presenza di cenere/suolo bruciato.
 
 # 4. Calcolo degli inidici vegetazionali  🌿
 
