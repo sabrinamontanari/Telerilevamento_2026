@@ -213,5 +213,26 @@ plot(ndvi_post_c, main="NDVI Post",  col=c("#B85B14", "#2D6A4F"))
 dev.off()
 ```
 <p align="center">
- <img src="img/class.png" width="800">
+ <img src="img/class.png" width="700">
 </p>
+
+## Frequenze e percentuali
+```r
+freq_pre <- freq(ndvi_pre_c)   #conta i pixel per ogni classe
+perc_pre <- freq_pre$count * 100 / ncell(ndvi_pre_c)   #calcola la percentuale di pixel per classe
+
+freq_post <- freq(ndvi_post_c) 
+perc_post <- freq_post$count * 100 / ncell(ndvi_post_c)
+```
+realizzazione della tabella
+```r
+tab <- data.frame(
+  class=c("suolo nudo", "vegetazione"),
+  perc_pre = round(perc_pre, 3),
+  perc_post = round(perc_post, 3)
+)
+```
+
+class         perc_pre   perc_post
+suolo nudo     42.23      42.511
+vegetazione    57.77      57.489
