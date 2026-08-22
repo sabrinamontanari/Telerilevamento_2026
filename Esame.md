@@ -119,7 +119,9 @@ dev.off()
 L'indice spettrale DVI (*Difference Vegetation Index*) permette di stimare la quantità e lo stato di salute della biomassa vegetale. Esso calcola la differenza algebrica tra la riflettanza nel Vicino Infrarosso (B8, NIR) e la riflettanza nel Rosso (B4, RED).
 > Alti valori di DVI sono indici di una vegetazione sana e densa (alta riflettanza dell'infrarosso)
 >
-**DVI = NIR - RED**
+$$
+DVI = NIR - RED
+$$
 >
 Sono stati calcolati i DVI della fase pre e post incendio:
 ```r
@@ -153,7 +155,9 @@ plot(dDVI, col = magma(100), main = "dDVI (Pre - Post)")
 ## Indice NDVI
 L'indice NDVI (*Normalized Difference Vegetation Index*) rappresenta un indice DVI normalizzato, che riduce i disturbi dovuti a variazioni di illuminazione solare, ombre topografiche e pendenze del terreno (valori compresi tra -1 e +1).
 >
-NDVI = NIR-RED / NIR+RED
+$$
+NDVI = \frac{NIR - RED}{NIR + RED}
+$$
 >
 Per il calcolo dell'NDVI pre e post incendio è stata usata la funzione `im.ndvi()` del pacchetto `imageRy`
 ```r
