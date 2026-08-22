@@ -234,5 +234,7 @@ tab <- data.frame(
 ```
 
 > class         perc_pre    perc_post
+> 
 > suolo nudo   -  42.23   -   42.511
+> 
 > vegetazione  -  57.77   -   57.489
