@@ -180,6 +180,7 @@ plot(dNDVI, col = magma(100), main = "dNDVI (Pre - Post)")
 <p align="center">
  <img src="img/NDVI.png" width="800">
 </p>
+
 >**Commento:**
 > Nella mappa *Post-incendio* si nota un drastico abbassamento dei valori, compresi tra **0.0 e 0.3** (verde scuro, blu/viola) rispetto alla mappa *Pre-incendio*.
 > La mappa *dNDVI* mostra le aree non colpite dal fuoco in colori scuri (valori intorno allo zero), mentre l'intera cicatrice dell'incendio risalta con tonalità chiare e accese (**dNDVI > +0.4**).
