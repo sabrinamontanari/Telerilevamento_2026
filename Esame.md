@@ -142,6 +142,7 @@ par(mar = c(3, 3, 3, 1))
 plot(dvi_pre, col = viridis(100), main = "DVI Pre")
 plot(dvi_post, col = viridis(100), main = "DVI Post")
 plot(dDVI, col = magma(100), main = "dDVI (Pre - Post)")
+dev.off()
 ```
 <p align="center">
  <img src="img/DVI.png" width="800">
@@ -176,11 +177,38 @@ par(mar = c(3, 3, 3, 1))
 plot(ndvi_pre, col = viridis(100), main = "NDVI Pre")
 plot(ndvi_post, col = viridis(100), main = "NDVI Post")
 plot(dNDVI, col = magma(100), main = "dNDVI (Pre - Post)")
+dev.off()
 ```
 <p align="center">
  <img src="img/NDVI.png" width="800">
 </p>
 
 >**Commento:**
-> Nella mappa *Post-incendio* si nota un drastico abbassamento dei valori, compresi tra **0.0 e 0.3** (verde scuro, blu/viola) rispetto alla mappa *Pre-incendio*.
+> Nella mappa *Post-incendio* si nota un drastico abbassamento dei valori, compresi tra **0.0 e 0.3** (verde scuro/blu) rispetto alla mappa *Pre-incendio*.
 > La mappa *dNDVI* mostra le aree non colpite dal fuoco in colori scuri (valori intorno allo zero), mentre l'intera cicatrice dell'incendio risalta con tonalità chiare e accese (**dNDVI > +0.4**).
+
+## Classificazione dei dati NDVI
+Per la classificazione *non supervisionata* è stata utilizzata la funzione `im.classify()` del pacchetto `imageRy`
+```r
+ndvi_pre_c <- im.classify(ndvi_pre, num_clusters = 2, seed = 1) # suddivisione dei pixel in due gruppi
+ndvi_post_c <- im.classify(ndvi_post, num_clusters = 2, seed = 1)
+```
+Le due classi sono state rinominate:
+```r
+levels(ndvi_pre_c) <- data.frame(
+  value = c(1, 2),
+  label = c("Suolo Bruciato/Nudo","Vegetazione Sana")
+)
+levels(ndvi_post_c) <- data.frame(
+  value = c(1, 2),
+  label = c("Suolo Bruciato/Nudo","Vegetazione Sana")
+)
+```
+Visualizzazione dei dati NDVI classificati
+```r
+im.multiframe(1, 2)
+par(mar = c(3, 3, 3, 7), xpd = TRUE) #xpd=TRUE evita che il testo venga tagliato
+plot(ndvi_pre_c, main="NDVI Pre",  col=c("#B85B14", "#2D6A4F"))
+plot(ndvi_post_c, main="NDVI Post",  col=c("#B85B14", "#2D6A4F"))
+dev.off()
+```
