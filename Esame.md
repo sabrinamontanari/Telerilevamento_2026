@@ -38,6 +38,7 @@ library(terra) # Per lavorare con raster e immagini satellitari
 library(imageRy)
 library(viridis)
 library(ggplot2)
+library(patchwork)
 ```
 ### Importazione delle immagini
 Per importare i dati è stata utilizzata la funzione `rast()` del pacchetto `terra` e le immagini sono state rinominate:
@@ -214,7 +215,7 @@ dev.off()
 ```
 <img src="img/ndvi_pre.png" width="49%"/> <img src="img/ndvi_post.png" width="49%"/>
 
-## Frequenze e percentuali
+## Frequenze e Percentuali di copertura
 ```r
 freq_pre <- freq(ndvi_pre_c)   #conta i pixel per ogni classe
 perc_pre <- freq_pre$count * 100 / ncell(ndvi_pre_c)   #calcola la percentuale di pixel per classe
@@ -231,7 +232,28 @@ tab <- data.frame(
 )
 print(tab)
 ```
-            class - perc_pre - perc_post
-        suolo nudo -  24.494 - 27.182
- vegetazionesparsa - 33.670 - 32.716
- vegetazione densa - 41.835 - 40.102
+>            class - perc_pre - perc_post
+>        suolo nudo -  24.494 - 27.182
+> vegetazionesparsa - 33.670 - 32.716
+> vegetazione densa - 41.835 - 40.102
+>
+## GRAFICO CON GGPLOT
+utilizzo il pacchetto `ggplot2` e `patchwork` per realizzare i grafici a barre
+```r
+g1 <- ggplot(tab, aes(x = class, y = perc_pre, color = class)) +      #structure
+  geom_bar(stat="identity", fill="white", show.legend = FALSE) +        #grafico a barre; nelle parentesi inserisco (la statistica usata, colore interno delle barre)
+  ylim(c(0,100)) +
+  labs(title = "Pre-Incendio", y = "Percentuale (%)") +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+
+g2 <- ggplot(tab, aes(x = class, y = perc_post, color = class)) +
+  geom_bar(stat="identity", fill="white") +
+  ylim(c(0,100)) +
+  labs(title = "Pre-Incendio", y = "Percentuale (%)") +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+
+g1+g2
+```
+<p align="center">
+ <img src="img/hist.png" width="800">
+</p>
