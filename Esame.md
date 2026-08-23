@@ -212,9 +212,7 @@ plot(ndvi_pre_c, main="NDVI Pre",  col=c("#B85B14", "#2D6A4F"))
 plot(ndvi_post_c, main="NDVI Post",  col=c("#B85B14", "#2D6A4F"))
 dev.off()
 ```
-<p align="center">
- <img src="img/class.png" width="700">
-</p>
+<img src="ndvi_pre.png" width="49%"/> <img src="ndvi_post.png" width="49%"/>
 
 ## Frequenze e percentuali
 ```r
