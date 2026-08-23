@@ -190,26 +190,26 @@ dev.off()
 ## Classificazione dei dati NDVI
 Per la classificazione *non supervisionata* è stata utilizzata la funzione `im.classify()` del pacchetto `imageRy`
 ```r
-ndvi_pre_c <- im.classify(ndvi_pre, num_clusters = 2, seed = 1) # suddivisione dei pixel in due gruppi
-ndvi_post_c <- im.classify(ndvi_post, num_clusters = 2, seed = 1)
+ndvi_pre_c <- im.classify(ndvi_pre, num_clusters = 3, seed = 1) # suddivisione dei pixel in due gruppi
+ndvi_post_c <- im.classify(ndvi_post, num_clusters = 3, seed = 1)
 ```
-Le due classi sono state rinominate attraverso la funzione `levels()` :
+Le tre classi sono state rinominate attraverso la funzione `levels()` :
 ```r
 levels(ndvi_pre_c) <- data.frame(
-  value = c(1, 2),
-  label = c("Suolo Bruciato/Nudo","Vegetazione Sana")
+  value = c(1:3),
+  label = c("Suolo Nudo", "Vegetazione sparsa", "Vegetazione densa")
 )
 levels(ndvi_post_c) <- data.frame(
-  value = c(1, 2),
-  label = c("Suolo Bruciato/Nudo","Vegetazione Sana")
+  value = c(1:3),
+  label = c("Suolo Nudo", "Vegetazione sparsa", "Vegetazione densa")
 )
 ```
 Visualizzazione dei dati NDVI classificati
 ```r
 im.multiframe(1, 2)
-par(mar = c(3, 3, 3, 7), xpd = TRUE) #xpd=TRUE evita che il testo venga tagliato
-plot(ndvi_pre_c, main="NDVI Pre",  col=c("#B85B14", "#2D6A4F"))
-plot(ndvi_post_c, main="NDVI Post",  col=c("#B85B14", "#2D6A4F"))
+par(mar = c(1, 3, 1, 3), xpd = TRUE)  #xpd=TRUE evita che il testo venga tagliato
+plot(ndvi_pre_c, main="NDVI Pre", col = c("#FFC107", "#9C27B0", "#2E7D32"), legend = FALSE)    #col=c() per colori personalizzati
+plot(ndvi_post_c, main="NDVI Post", col = c("#FFC107", "#9C27B0", "#2E7D32"), cex.legend = 0.8)
 dev.off()
 ```
 <img src="img/ndvi_pre.png" width="49%"/> <img src="img/ndvi_post.png" width="49%"/>
@@ -222,17 +222,16 @@ perc_pre <- freq_pre$count * 100 / ncell(ndvi_pre_c)   #calcola la percentuale d
 freq_post <- freq(ndvi_post_c) 
 perc_post <- freq_post$count * 100 / ncell(ndvi_post_c)
 ```
-realizzazione della tabella
+Realizzazione della tabella
 ```r
 tab <- data.frame(
-  class=c("suolo nudo", "vegetazione"),
+  class=c("suolo nudo", "vegetazione sparsa", "vegetazione densa"),
   perc_pre = round(perc_pre, 3),
   perc_post = round(perc_post, 3)
 )
+print(tab)
 ```
-
-> class         perc_pre    perc_post
-> 
-> suolo nudo   -  42.23   -   42.511
-> 
-> vegetazione  -  57.77   -   57.489
+            class - perc_pre - perc_post
+        suolo nudo -  24.494 - 27.182
+ vegetazionesparsa - 33.670 - 32.716
+ vegetazione densa - 41.835 - 40.102
