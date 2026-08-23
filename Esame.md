@@ -255,5 +255,5 @@ g2 <- ggplot(tab, aes(x = class, y = perc_post, color = class)) +
 g1+g2
 ```
 <p align="center">
- <img src="img/hist.png" width="800">
+ <img src="img/hist.png" width="600">
 </p>
