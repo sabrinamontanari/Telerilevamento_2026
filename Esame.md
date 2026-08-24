@@ -67,7 +67,6 @@ Per farlo utilizzo la funzione `im.plotRGB()` del pacchetto `imageRy`
 im.multiframe(1, 2)  # visualizza due grafici sulla stessa riga
 im.plotRGB(pre, r=3, g=2, b=1, title="pre-indendio")
 im.plotRGB(post, r=3, g=2, b=1, title="post-indendio")
-dev.off()  # chiude il pannello di visualizzazione dell'immagine
 ```
 <p align="center">
  <img src="img/RGB.png" width="500">
@@ -105,6 +104,7 @@ plot(post[[1]], col = magma(100), main = "Post - Blue (B2)", cex.main = 0.8)
 plot(post[[2]], col = magma(100), main = "Post - Green (B3)", cex.main = 0.8)
 plot(post[[3]], col = magma(100), main = "Post - Red (B4)", cex.main = 0.8)
 plot(post[[4]], col = magma(100), main = "Post - NIR (B8)", cex.main = 0.8)
+
 dev.off()
 ```
 <p align="center">
@@ -143,7 +143,6 @@ par(mar = c(3, 3, 3, 1))
 plot(dvi_pre, col = viridis(100), main = "DVI Pre")
 plot(dvi_post, col = viridis(100), main = "DVI Post")
 plot(dDVI, col = magma(100), main = "dDVI (Pre - Post)")
-dev.off()
 ```
 <p align="center">
  <img src="img/DVI.png" width="800">
@@ -178,7 +177,6 @@ par(mar = c(3, 3, 3, 1))
 plot(ndvi_pre, col = viridis(100), main = "NDVI Pre")
 plot(ndvi_post, col = viridis(100), main = "NDVI Post")
 plot(dNDVI, col = magma(100), main = "dNDVI (Pre - Post)")
-dev.off()
 ```
 <p align="center">
  <img src="img/NDVI.png" width="800">
@@ -209,7 +207,6 @@ Visualizzazione dei dati NDVI classificati
 ```r
 plot(ndvi_pre_c, main="NDVI Pre", col = c("#FFC107", "#9C27B0", "#2E7D32"), legend = FALSE)  #col=c() per colori personalizzati
 plot(ndvi_post_c, main="NDVI Post", col = c("#FFC107", "#9C27B0", "#2E7D32"), cex.legend = 0.8)
-dev.off()
 ```
 <img src="img/ndvi_pre.png" width="49%"/> <img src="img/ndvi_post.png" width="49%"/>
 
@@ -285,13 +282,13 @@ im.plotRGB(post18, r=4, g=3, b=2, title="False colors 2018")
 # dvi_pre <- pre[[4]] - pre[[3]]   
 dvi_post18 <- post18[[4]] - post18[[3]] 
 dDVI <- dvi_pre - dvi_post18
+
 # Layout
 im.multiframe(1, 3)
 par(mar = c(3, 3, 3, 1))
 plot(dvi_pre, col = viridis(100), main = "DVI Pre")
 plot(dvi_post18, col = viridis(100), main = "DVI 2018")
 plot(dDVI, col = magma(100), main = "dDVI (Pre - 2018)")
-dev.off()
 ```
 <p align="center">
  <img src="img/dvi2018.png" width="800">
@@ -302,13 +299,14 @@ dev.off()
 # ndvi_pre <- im.ndvi(pre, 4, 3)
 ndvi_post18 <- im.ndvi(post18, 4, 3)
 dNDVI <- ndvi_pre - ndvi_post18
+
 #Layout
 im.multiframe(1, 3)
 par(mar = c(3, 3, 3, 1))
 plot(ndvi_pre, col = viridis(100), main = "NDVI Pre", cex.main = 1.2)
 plot(ndvi_post18, col = viridis(100), main = "NDVI 2018", cex.main = 1.2)
 plot(dNDVI, col = magma(100), main = "dNDVI (Pre - 2018)", cex.main = 1.2)
-dev.off()
+
 ```
 <p align="center">
  <img src="img/ndvi2018.png" width="800">
