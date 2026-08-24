@@ -277,7 +277,7 @@ im.plotRGB(post18, r=4, g=3, b=2, title="False colors 2018")
  <img src="img/False2018.png" width="400">
 </p>
 
-### Indice DVI
+### Indice DVI (2018)
 ```r
 # dvi_pre <- pre[[4]] - pre[[3]]   
 dvi_post18 <- post18[[4]] - post18[[3]] 
@@ -298,7 +298,7 @@ dev.off()
  <img src="img/dvi2018.png" width="800">
 </p>
 
-## indice NDVI
+## Indice NDVI (2018)
 ```r
 # ndvi_pre <- im.ndvi(pre, 4, 3)
 ndvi_post18 <- im.ndvi(post18, 4, 3)
@@ -318,3 +318,11 @@ dev.off()
 <p align="center">
  <img src="img/ndvi2018.png" width="800">
 </p>
+
+## Frequenze e percentuali
+| class | % pre | % post | % 2018 |
+|:--| :--: | :--:| :--:|
+| **suolo nudo**  |   24.5  | 27.2 | 29.2 |
+| **vegetazione sparsa**   |  33.7  | 32.7 | 21.2 |
+|  **vegetazione densa**  |   41.8  | 40.1 |  49.6 |
+
