@@ -225,14 +225,7 @@ tab <- data.frame(
   perc_pre = round(perc_pre, 1),
   perc_post = round(perc_post, 1)
 )
-print(tab)  # visualizza la tabella
 ```
-| classi | % pre | % post |
-| :--- | :---: | :---: |
-| **suolo nudo** |  24.5 | 27.2 |
-| **vegetazionesparsa** | 33.7 | 32.7 |
-| **vegetazione densa** | 41.8 | 40.1 |
-
 ## Grafico a barre della copertura percentuale
 Sono stat utilizzati i pacchetti `ggplot2` e `patchwork` per realizzare e visualizzare i grafici a barre relativi alle diverse coperture in percentuale delle tre classi, prima e dopo l'incendio.
 ```r
@@ -274,14 +267,14 @@ im.plotRGB(post18, r=4, g=3, b=2, title="False colors 2018")
 ### Indice DVI (2018)
 ```r
 dvi_post18 <- post18[[4]] - post18[[3]] 
-dDVI <- dvi_pre - dvi_post18
+dDVI2 <- dvi_pre - dvi_post18
 # Layout
 png("dvi2018.png", width = 2200, height = 1200, res = 220)
  im.multiframe(1, 3)
  par(mar = c(3, 3, 3, 1))
  plot(dvi_pre, col = viridis(100), main = "DVI Pre")
  plot(dvi_post18, col = viridis(100), main = "DVI 2018")
- plot(dDVI, col = magma(100), main = "dDVI (Pre - 2018)")
+ plot(dDVI2, col = magma(100), main = "dDVI (Pre - 2018)")
 dev.off()
 ```
 <p align="center">
@@ -291,14 +284,14 @@ dev.off()
 ## Indice NDVI (2018)
 ```r
 ndvi_post18 <- im.ndvi(post18, 4, 3)
-dNDVI <- ndvi_pre - ndvi_post18
+dNDVI2 <- ndvi_pre - ndvi_post18
 #Layout
 png("ndvi2018.png", width = 2200, height = 1200, res = 220)
  im.multiframe(1, 3)
  par(mar = c(3, 3, 3, 1))
  plot(ndvi_pre, col = viridis(100), main = "NDVI Pre")
  plot(ndvi_post18, col = viridis(100), main = "NDVI 2018")
- plot(dNDVI, col = magma(100), main = "dNDVI (Pre - 2018)")
+ plot(dNDVI2, col = magma(100), main = "dNDVI (Pre - 2018)")
 dev.off()
 ```
 <p align="center">
