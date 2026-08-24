@@ -34,11 +34,11 @@ setwd("C:\\Teleril_GEE_exports")
 getwd()
 list.files()
 # Pacchetti
-library(terra) # Per lavorare con raster e immagini satellitari
-library(imageRy)
-library(viridis)
-library(ggplot2)
-library(patchwork)
+library(terra)     # Per lavorare con raster e immagini satellitari
+library(imageRy)   # Per l'analisi semplificata di immagini raster/satellitari
+library(viridis)   # Per palette di colori di grafici e mappe
+library(ggplot2)   # Per la creazione di grafici
+library(patchwork) # Per unire più grafici in un unico layout
 ```
 ### Importazione delle immagini
 Per importare i dati è stata utilizzata la funzione `rast()` del pacchetto `terra` e le immagini sono state rinominate:
@@ -64,10 +64,10 @@ plot(post)
 ### - Visualizzazione delle immagini in RGB (colori reali)
 Per farlo utilizzo la funzione `im.plotRGB()` del pacchetto `imageRy`
 ```r
-im.multiframe(1, 2) # visualizza due grafici sulla stessa riga
+im.multiframe(1, 2)  # visualizza due grafici sulla stessa riga
 im.plotRGB(pre, r=3, g=2, b=1, title="pre-indendio")
 im.plotRGB(post, r=3, g=2, b=1, title="post-indendio")
-dev.off() # chiude il pannello di visualizzazione dell'immagine
+dev.off()  # chiude il pannello di visualizzazione dell'immagine
 ```
 <p align="center">
  <img src="img/RGB.png" width="500">
@@ -88,11 +88,11 @@ im.plotRGB(post, r=4, g=3, b=2, title="post")
 
 
 ### - Visualizzazione e confronto delle singole bande spettrali (B2, B3, B4, B8)
-Utilizzo il pacchetto `viridis` e la scala di colori `magma` per analizzare le variazioni di riflettanza pre e post-incendio.
+Utilizzo il pacchetto `viridis` e la palette di colori `magma` per analizzare le variazioni di riflettanza pre e post-incendio.
 ```r
-png("Bande.png", width = 2200, height = 1200, res = 220) # salvare il file direttamente su disco impostandone risoluzione e dimensioni
+png("Bande.png", width = 2200, height = 1200, res = 220)  # salva il file direttamente su disco impostandone risoluzione e dimensioni
 im.multiframe(2, 4)
-par(mar = c(2.5, 2.5, 2, 0.5)) # riduce i margini esterni attorno a ciascun grafico
+par(mar = c(2.5, 2.5, 2, 0.5))  # riduce i margini esterni attorno a ciascun grafico
 
 # PRE-INCENDIO
 plot(pre[[1]], col = magma(100), main = "Pre - Blue (B2)", cex.main = 0.8) 
@@ -126,12 +126,12 @@ $$
 >
 Sono stati calcolati i DVI della fase pre e post incendio:
 ```r
-dvi_pre <- pre[[4]] - pre[[3]]      # min value: -0.069; max value: 0.774
-dvi_post <- post[[4]] - post[[3]]   # min value: -0.062; max value: 1.023
+dvi_pre <- pre[[4]] - pre[[3]]     # min value: -0.069; max value: 0.774
+dvi_post <- post[[4]] - post[[3]]  # min value: -0.062; max value: 1.023
 ```
 Successivamente è stata calcolata la variazione multitemporale, il **dDVI**:
 ```r
-dDVI <- dvi_pre - dvi_post   # min value: -0.396; max value: 0.606 
+dDVI <- dvi_pre - dvi_post  # min value: -0.396; max value: 0.606 
 ```
 > **Commento:**
 > L'area presenta una netta eterogeneità: mentre la vegetazione indisturbata ha continuato la sua crescita (portando il DVI massimo oltre 1.0), le zone interessate dal fuoco hanno subito un crollo del segnale spettrale, evidenziato da valori di dDVI fortemente positivi (fino a +0.61).
@@ -167,7 +167,7 @@ Per il calcolo dell'NDVI pre e post incendio è stata usata la funzione `im.ndvi
 ndvi_pre <- im.ndvi(pre, 4, 3)
 ndvi_post <- im.ndvi(post, 4, 3)
 ```
-In seguito è stata calcolata la variazione multitemporale, $dNDVI = NDVI_{pre} - NDVI_{post}$, per mappare con precisione il perimetro del bruciato e classificare i livelli di danno subiti dall'ecosistema forestale:
+In seguito è stata calcolata la variazione multitemporale, $**dNDVI** = NDVI_{pre} - NDVI_{post}$, per mappare con precisione il perimetro del bruciato e classificare i livelli di danno subiti dall'ecosistema forestale:
 ```r
 dNDVI <- ndvi_pre - ndvi_post
 ```
@@ -191,7 +191,7 @@ dev.off()
 ## Classificazione dei dati NDVI
 Per la classificazione *non supervisionata* è stata utilizzata la funzione `im.classify()` del pacchetto `imageRy`
 ```r
-ndvi_pre_c <- im.classify(ndvi_pre, num_clusters = 3, seed = 1) # suddivisione dei pixel in due gruppi
+ndvi_pre_c <- im.classify(ndvi_pre, num_clusters = 3, seed = 1)  # suddivisione dei pixel in tre gruppi
 ndvi_post_c <- im.classify(ndvi_post, num_clusters = 3, seed = 1)
 ```
 Le tre classi sono state rinominate attraverso la funzione `levels()` :
@@ -208,8 +208,8 @@ levels(ndvi_post_c) <- data.frame(
 Visualizzazione dei dati NDVI classificati
 ```r
 im.multiframe(1, 2)
-par(mar = c(1, 3, 1, 3), xpd = TRUE)  #xpd=TRUE evita che il testo venga tagliato
-plot(ndvi_pre_c, main="NDVI Pre", col = c("#FFC107", "#9C27B0", "#2E7D32"), legend = FALSE)    #col=c() per colori personalizzati
+par(mar = c(1, 3, 1, 3), xpd = TRUE)  # xpd=TRUE evita che il testo venga tagliato
+plot(ndvi_pre_c, main="NDVI Pre", col = c("#FFC107", "#9C27B0", "#2E7D32"), legend = FALSE)  #col=c() per colori personalizzati
 plot(ndvi_post_c, main="NDVI Post", col = c("#FFC107", "#9C27B0", "#2E7D32"), cex.legend = 0.8)
 dev.off()
 ```
@@ -217,8 +217,8 @@ dev.off()
 
 ## Frequenze e Percentuali di copertura
 ```r
-freq_pre <- freq(ndvi_pre_c)   #conta i pixel per ogni classe
-perc_pre <- freq_pre$count * 100 / ncell(ndvi_pre_c)   #calcola la percentuale di pixel per classe
+freq_pre <- freq(ndvi_pre_c)  # conta i pixel per ogni classe
+perc_pre <- freq_pre$count * 100 / ncell(ndvi_pre_c)  # calcola la percentuale di pixel per classe
 
 freq_post <- freq(ndvi_post_c) 
 perc_post <- freq_post$count * 100 / ncell(ndvi_post_c)
@@ -232,11 +232,13 @@ tab <- data.frame(
 )
 print(tab)
 ```
->            class - perc_pre - perc_post
->        suolo nudo -  24.494 - 27.182
-> vegetazionesparsa - 33.670 - 32.716
-> vegetazione densa - 41.835 - 40.102
->
+
+| classi | % pre | % post |
+| :--- | :---: | :---: |
+| **suolo nudo** |  24.494 | 27.182 |
+| **vegetazionesparsa** | 33.670 | 32.716 |
+| **vegetazione densa** | 41.835 | 40.102 |
+
 ## GRAFICO CON GGPLOT
 utilizzo il pacchetto `ggplot2` e `patchwork` per realizzare i grafici a barre
 ```r
