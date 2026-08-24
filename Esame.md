@@ -265,33 +265,23 @@ Il procedimento è identico a quello precedente:
 post18 <- rast("sentinel2_jul2018.tif")
 plot(post18)
 ```
-<p align="center">
- <img src="img/2018.png" width="400">
-</p>
-
 Visualizzazione del grafico in False colors
 ```r
 im.plotRGB(post18, r=4, g=3, b=2, title="False colors 2018")
 ```
-<p align="center">
- <img src="img/False2018.png" width="400">
-</p>
+ <img src="img/2018.png" width="49%"> <img src="img/False2018.png" width="49%">
 
 ### Indice DVI (2018)
 ```r
-# dvi_pre <- pre[[4]] - pre[[3]]   
 dvi_post18 <- post18[[4]] - post18[[3]] 
 dDVI <- dvi_pre - dvi_post18
-
 # Layout
 png("dvi2018.png", width = 2200, height = 1200, res = 220)
-
-im.multiframe(1, 3)
-par(mar = c(3, 3, 3, 1))
-plot(dvi_pre, col = viridis(100), main = "DVI Pre")
-plot(dvi_post18, col = viridis(100), main = "DVI 2018")
-plot(dDVI, col = magma(100), main = "dDVI (Pre - 2018)")
-
+ im.multiframe(1, 3)
+ par(mar = c(3, 3, 3, 1))
+ plot(dvi_pre, col = viridis(100), main = "DVI Pre")
+ plot(dvi_post18, col = viridis(100), main = "DVI 2018")
+ plot(dDVI, col = magma(100), main = "dDVI (Pre - 2018)")
 dev.off()
 ```
 <p align="center">
@@ -300,26 +290,53 @@ dev.off()
 
 ## Indice NDVI (2018)
 ```r
-# ndvi_pre <- im.ndvi(pre, 4, 3)
 ndvi_post18 <- im.ndvi(post18, 4, 3)
 dNDVI <- ndvi_pre - ndvi_post18
-
 #Layout
 png("ndvi2018.png", width = 2200, height = 1200, res = 220)
-
-im.multiframe(1, 3)
-par(mar = c(3, 3, 3, 1))
-plot(ndvi_pre, col = viridis(100), main = "NDVI Pre", cex.main = 1.2)
-plot(ndvi_post18, col = viridis(100), main = "NDVI 2018", cex.main = 1.2)
-plot(dNDVI, col = magma(100), main = "dNDVI (Pre - 2018)", cex.main = 1.2)
-
+ im.multiframe(1, 3)
+ par(mar = c(3, 3, 3, 1))
+ plot(ndvi_pre, col = viridis(100), main = "NDVI Pre")
+ plot(ndvi_post18, col = viridis(100), main = "NDVI 2018")
+ plot(dNDVI, col = magma(100), main = "dNDVI (Pre - 2018)")
 dev.off()
 ```
 <p align="center">
  <img src="img/ndvi2018.png" width="800">
 </p>
 
+## Classificazione NDVI 2018
+```r
+ndvi_18_c <- im.classify(ndvi_post18, num_clusters = 3, seed=1)
+levels(ndvi_18_c) <- data.frame(
+    value = c(1:3),
+    label = c("Suolo Nudo","Vegetazione sparsa", "Vegetazione densa")
+  )
+```
+Visualizzazione mappa divisa nelle tre classi:
+```r
+png("class_2018.png", width = 2200, height = 1200, res = 220)
+  plot(ndvi_18_c, main="NDVI 2018", col = c("#FFC107", "#9C27B0", "#2E7D32"), cex.legend = 0.8)
+dev.off()
+```
+<p align="center">
+ <img src="img/class_2018.png" width="800">
+</p>
+
 ## Frequenze e percentuali
+```r
+freq_18 <- freq(ndvi_18_c) 
+perc_18 <- freq_18$count * 100 / ncell(ndvi_18_c)
+
+tab <- data.frame(
+  class=c("suolo nudo", "vegetazione sparsa", "vegetazione densa"),
+  perc_pre = round(perc_pre, 1),
+  perc_post = round(perc_post, 1),
+  perc_18 = round(perc_18, 1)
+)
+print(tab)
+```
+Tabella relativa alla copertura percentuale nei tre periodi considerati
 | class | % pre | % post | % 2018 |
 |:--| :--: | :--:| :--:|
 | **suolo nudo**  |   24.5  | 27.2 | 29.2 |
