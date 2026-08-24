@@ -299,18 +299,10 @@ dev.off()
 </p>
 
 > **Commento:**
-> Nella mappa della differenza di NDVI tra *pre-incendio* e il *2018*, la quasi totalità dell'area bruciata assume colorazioni viola scuro e nero. Queste tonalità > indicano valori negativi, testimoniando matematicamente che l'NDVI del 2023 è superiore a quello del 2022 e confermando così una ripresa positiva dell'ecosistema, con la ricolonizzazione del suolo da parte di nuova vegetazione fotosinteticamente attiva.
+> Nella mappa della differenza di NDVI *post-incendio-2018*, la quasi totalità dell'area bruciata assume tonalità scure (valori negativi) che indicano un aumento di vegetazione fotosinteticamente attiva (NDVI_2018 > NDVI_2017).
+> Tuttavia, se il confronto viene fatto con la fase *pre-incendio* (dNDVI pre-2018), l'area interessata dal rogo è rappresentata da colori chiari indici di una ripresa lenta della vegetazione che non ha ancora raggiunto lo stato di salute precedente al rogo.
 
-> dNDVI tra il prima dell'incendio e un anno dopo
-<p align="center">
- <img src="img/pre-2018.png" width="800">
-</p>
-
-> dNDVI tra il post-incendio e un anno dopo
-<p align="center">
- <img src="img/post-2018.png" width="800">
-</p>
-
+<img src="img/post-2018.png" width="49%"> <img src="img/pre-2018.png" width="49%">
 ## Classificazione NDVI 2018
 ```r
 ndvi_18_c <- im.classify(ndvi_post18, num_clusters = 3, seed=1)
