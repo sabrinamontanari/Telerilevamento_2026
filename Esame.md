@@ -209,7 +209,8 @@ plot(ndvi_pre_c, main="NDVI Pre", col = c("#FFC107", "#9C27B0", "#2E7D32"), lege
 plot(ndvi_post_c, main="NDVI Post", col = c("#FFC107", "#9C27B0", "#2E7D32"), cex.legend = 0.8)
 ```
 <img src="img/ndvi_pre.png" width="49%"/> <img src="img/ndvi_post.png" width="49%"/>
-
+>**Commento:**
+> Dal grafico è evidente l'aumento delle area con vegetazione degradata/suolo nudo
 ## Frequenze e Percentuali di copertura
 ```r
 freq_pre <- freq(ndvi_pre_c)  # conta i pixel per ogni classe
@@ -250,7 +251,7 @@ g1 + g2   # visualizza i grafici in un unico layout
 </p>
 
 # 5. Analisi dopo un anno dall'incendio - Luglio 2018
-Per studiare come e se la vegetazione sia tornata al suo stato di salute originale (pre-incendio), è stata analizzata un immagine satellitare corrispondente al periodo di luglio 2018.
+Per studiare come e se la vegetazione sia tornata al suo stato di salute originale (pre-incendio), è stata analizzata un'immagine satellitare corrispondente al periodo di luglio 2018.
 Il procedimento è identico a quello precedente:
 
 ### Importazione e analisi dell'immagine
@@ -282,27 +283,34 @@ dev.off()
 </p>
 
 ## Indice NDVI (2018)
+Calcolo l'indice con la funzione `im.ndvi()`
 ```r
 ndvi_post18 <- im.ndvi(post18, 4, 3)
-dNDVI2 <- ndvi_pre - ndvi_post18
-#Layout
-png("ndvi2018.png", width = 2200, height = 1200, res = 220)
- im.multiframe(1, 3)
- par(mar = c(3, 3, 3, 1))
- plot(ndvi_pre, col = viridis(100), main = "NDVI Pre")
- plot(ndvi_post18, col = viridis(100), main = "NDVI 2018")
- plot(dNDVI2, col = magma(100), main = "dNDVI (Pre - 2018)")
-dev.off()
+plot(ndvi_post18, col = viridis(100), main = "NDVI 2018")
 ```
 <p align="center">
  <img src="img/ndvi2018.png" width="800">
 </p>
 
+Confronto le variazioni multitemporali dNDVI **Pre-2018** e **Post-2018**
+``` r
+# PRE-2018
+dNDVI2 <- ndvi_pre - ndvi_post18
+png("pre-2018.png", width = 2200, height = 1200, res = 220)
+  plot(dNDVI2, col = magma(100), main = "dNDVI (Pre - 2018)", cex.main = 1.2)
+dev.off()
+# POST -2018
+dNDVI3 <- ndvi_post - ndvi_post18
+png("post-2018.png", width = 2200, height = 1200, res = 220)
+  plot(dNDVI3, col = magma(100), main = "dNDVI (Post - 2018)", cex.main = 1.2)
+dev.off()
+```
 > **Commento:**
-> Nella mappa della differenza di NDVI *post-incendio-2018*, la quasi totalità dell'area bruciata assume tonalità scure (valori negativi) che indicano un aumento di vegetazione fotosinteticamente attiva (NDVI_2018 > NDVI_2017).
+> Nella mappa della differenza di NDVI *post incendio - 2018*, la quasi totalità dell'area bruciata assume tonalità scure (valori negativi) che indicano un aumento di vegetazione fotosinteticamente attiva (NDVI_2018 > NDVI_2017).
 > Tuttavia, se il confronto viene fatto con la fase *pre-incendio* (dNDVI pre-2018), l'area interessata dal rogo è rappresentata da colori chiari indici di una ripresa lenta della vegetazione che non ha ancora raggiunto lo stato di salute precedente al rogo.
 
 <img src="img/post-2018.png" width="49%"> <img src="img/pre-2018.png" width="49%">
+
 ## Classificazione NDVI 2018
 ```r
 ndvi_18_c <- im.classify(ndvi_post18, num_clusters = 3, seed=1)
@@ -321,6 +329,8 @@ dev.off()
  <img src="img/class_2018.png" width="800">
 </p>
 
+> **Commento:**
+> Dalla mappa divisa per classi è evidente un parziale aumento della vegetiazione rispetto al periodo *post-incendio*
 
 ## Frequenze e percentuali (NDVI 2018)
 ```r
@@ -342,3 +352,7 @@ Tabella relativa alla copertura percentuale nei tre periodi considerati
 | **vegetazione sparsa**   |  33.7  | 32.7 | 21.2 |
 |  **vegetazione densa**  |   41.8  | 40.1 |  49.6 |
 
+> **Commento:**
+> Il calcolo delle percentuali di copertura del suolo mostrano un aumento significativo della vegetazione densa, che però rimane limitata ad aree circoscritte. Si nota infatti un aumento del suolo nudo, indice di un recupero lento di zone particolarmente degradate.
+
+# 6. CONCLUSIONI
