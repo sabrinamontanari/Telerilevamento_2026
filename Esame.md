@@ -262,7 +262,7 @@ Visualizzazione del grafico in False colors
 ```r
 im.plotRGB(post18, r=4, g=3, b=2, title="False colors 2018")
 ```
- <img src="img/2018.png" width="49%"> <img src="img/False2018.png" width="49%">
+ <img src="img/2018.png" width="40%"> <img src="img/False2018.png" width="40%">
 
 ### Indice DVI (2018)
 ```r
@@ -316,7 +316,7 @@ dev.off()
  <img src="img/class_2018.png" width="800">
 </p>
 
-## Frequenze e percentuali
+## Frequenze e percentuali (NDVI 2018)
 ```r
 freq_18 <- freq(ndvi_18_c) 
 perc_18 <- freq_18$count * 100 / ncell(ndvi_18_c)
