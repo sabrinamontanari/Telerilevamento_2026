@@ -261,7 +261,8 @@ g1 + g2   # visualizza i grafici in un unico layout
 
 # 5. Analisi dopo un anno dall'incendio - Luglio 2018
 Per studiare come e se la vegetazione sia tornata al suo stato di salute originale (pre-incendio), è stata analizzata un immagine satellitare corrispondente al periodo di luglio 2018.
-Il procedimento è identico a quello precedente
+Il procedimento è identico a quello precedente:
+
 ### Importazione e analisi dell'immagine
 ```r
 post18 <- rast("sentinel2_jul2018.tif")
@@ -270,6 +271,7 @@ plot(post18)
 <p align="center">
  <img src="img/2018.png" width="400">
 </p>
+
 Visualizzazione del grafico in False colors
 ```r
 im.plotRGB(post18, r=4, g=3, b=2, title="2018")
