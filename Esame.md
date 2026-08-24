@@ -254,7 +254,7 @@ g2 <- ggplot(tab, aes(x = class, y = perc_post, color = class)) +
 
 g1 + g2   # visualizza i grafici in un unico layout
 ```
-> Grafico comparativo
+> Grafico comparativo pre/post incendio
 <p align="center">
  <img src="img/barre.png" width="700">
 </p>
