@@ -345,3 +345,17 @@ Tabella relativa alla copertura percentuale nei tre periodi considerati
 <p align="center">
  <img src="img/confronto_2018.png" width="800">
 </p>
+
+### Grafico a barre
+```r
+g3 <- ggplot(tab, aes(x = class, y = perc_18, color = class)) +
+  geom_bar(stat="identity", fill="white") +
+  ylim(c(0,100)) +
+  labs(title = "2018", y = "Percentuale (%)") +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+
+g1 + g2 + g3
+```
+<p align="center">
+ <img src="img/barre_2018.png" width="800">
+</p>
