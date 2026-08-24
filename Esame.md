@@ -274,7 +274,7 @@ plot(post18)
 
 Visualizzazione del grafico in False colors
 ```r
-im.plotRGB(post18, r=4, g=3, b=2, title="2018")
+im.plotRGB(post18, r=4, g=3, b=2, title="False colors 2018")
 ```
 <p align="center">
  <img src="img/False2018.png" width="400">
