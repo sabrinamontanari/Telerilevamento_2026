@@ -166,7 +166,7 @@ Per il calcolo dell'NDVI pre e post incendio è stata usata la funzione `im.ndvi
 ndvi_pre <- im.ndvi(pre, 4, 3)
 ndvi_post <- im.ndvi(post, 4, 3)
 ```
-In seguito è stata calcolata la variazione multitemporale, $**dNDVI** = NDVI_{pre} - NDVI_{post}$, per mappare con precisione il perimetro del bruciato e classificare i livelli di danno subiti dall'ecosistema forestale:
+In seguito è stata calcolata la variazione multitemporale, $dNDVI = NDVI_{pre} - NDVI_{post}$, per mappare con precisione il perimetro del bruciato e classificare i livelli di danno subiti dall'ecosistema forestale:
 ```r
 dNDVI <- ndvi_pre - ndvi_post
 ```
