@@ -251,7 +251,7 @@ g1 <- ggplot(tab, aes(x = class, y = perc_pre, color = class)) +
 g2 <- ggplot(tab, aes(x = class, y = perc_post, color = class)) +
   geom_bar(stat="identity", fill="white") +
   ylim(c(0,100)) +
-  labs(title = "Pre-Incendio", y = "Percentuale (%)") +
+  labs(title = "Post-Incendio", y = "Percentuale (%)") +
   theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
 
 g1 + g2   # visualizza i grafici in un unico layout
