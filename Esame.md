@@ -259,3 +259,55 @@ g1 + g2   # visualizza i grafici in un unico layout
  <img src="img/barre.png" width="700">
 </p>
 
+# 5. Analisi dopo un anno dall'incendio - Luglio 2018
+Per studiare come e se la vegetazione sia tornata al suo stato di salute originale (pre-incendio), è stata analizzata un immagine satellitare corrispondente al periodo di luglio 2018.
+Il procedimento è identico a quello precedente
+### Importazione e analisi dell'immagine
+```r
+post18 <- rast("sentinel2_jul2018.tif")
+plot(post18)
+```
+<p align="center">
+ <img src="img/2018.png" width="400">
+</p>
+Visualizzazione del grafico in False colors
+```r
+im.plotRGB(post18, r=4, g=3, b=2, title="2018")
+```
+<p align="center">
+ <img src="img/False18.png" width="400">
+</p>
+
+### Indice DVI
+```r
+# dvi_pre <- pre[[4]] - pre[[3]]   
+dvi_post18 <- post18[[4]] - post18[[3]] 
+dDVI <- dvi_pre - dvi_post18
+# Layout
+im.multiframe(1, 3)
+par(mar = c(3, 3, 3, 1))
+plot(dvi_pre, col = viridis(100), main = "DVI Pre")
+plot(dvi_post18, col = viridis(100), main = "DVI 2018")
+plot(dDVI, col = magma(100), main = "dDVI (Pre - 2018)")
+dev.off()
+```
+<p align="center">
+ <img src="img/dvi2018.png" width="400">
+</p>
+
+## indice NDVI
+```r
+# ndvi_pre <- im.ndvi(pre, 4, 3)
+ndvi_post18 <- im.ndvi(post18, 4, 3)
+dNDVI <- ndvi_pre - ndvi_post18
+#Layout
+im.multiframe(1, 3)
+par(mar = c(3, 3, 3, 1))
+plot(ndvi_pre, col = viridis(100), main = "NDVI Pre", cex.main = 1.2)
+plot(ndvi_post18, col = viridis(100), main = "NDVI 2018", cex.main = 1.2)
+plot(dNDVI, col = magma(100), main = "dNDVI (Pre - 2018)", cex.main = 1.2)
+dev.off()
+```
+<p align="center">
+ <img src="img/ndvi2018.png" width="400">
+</p>
