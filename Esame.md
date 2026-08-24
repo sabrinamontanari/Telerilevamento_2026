@@ -284,11 +284,15 @@ dvi_post18 <- post18[[4]] - post18[[3]]
 dDVI <- dvi_pre - dvi_post18
 
 # Layout
+png("dvi2018.png", width = 2200, height = 1200, res = 220)
+
 im.multiframe(1, 3)
 par(mar = c(3, 3, 3, 1))
 plot(dvi_pre, col = viridis(100), main = "DVI Pre")
 plot(dvi_post18, col = viridis(100), main = "DVI 2018")
 plot(dDVI, col = magma(100), main = "dDVI (Pre - 2018)")
+
+dev.off()
 ```
 <p align="center">
  <img src="img/dvi2018.png" width="800">
@@ -301,12 +305,15 @@ ndvi_post18 <- im.ndvi(post18, 4, 3)
 dNDVI <- ndvi_pre - ndvi_post18
 
 #Layout
+png("ndvi2018.png", width = 2200, height = 1200, res = 220)
+
 im.multiframe(1, 3)
 par(mar = c(3, 3, 3, 1))
 plot(ndvi_pre, col = viridis(100), main = "NDVI Pre", cex.main = 1.2)
 plot(ndvi_post18, col = viridis(100), main = "NDVI 2018", cex.main = 1.2)
 plot(dNDVI, col = magma(100), main = "dNDVI (Pre - 2018)", cex.main = 1.2)
 
+dev.off()
 ```
 <p align="center">
  <img src="img/ndvi2018.png" width="800">
