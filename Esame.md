@@ -223,39 +223,41 @@ perc_pre <- freq_pre$count * 100 / ncell(ndvi_pre_c)  # calcola la percentuale d
 freq_post <- freq(ndvi_post_c) 
 perc_post <- freq_post$count * 100 / ncell(ndvi_post_c)
 ```
-Realizzazione della tabella
+Realizzazione della tabella riassuntiva
 ```r
 tab <- data.frame(
   class=c("suolo nudo", "vegetazione sparsa", "vegetazione densa"),
-  perc_pre = round(perc_pre, 3),
-  perc_post = round(perc_post, 3)
+  perc_pre = round(perc_pre, 1),
+  perc_post = round(perc_post, 1)
 )
-print(tab)
+print(tab)  # visualizza la tabella
 ```
-
 | classi | % pre | % post |
 | :--- | :---: | :---: |
-| **suolo nudo** |  24.494 | 27.182 |
-| **vegetazionesparsa** | 33.670 | 32.716 |
-| **vegetazione densa** | 41.835 | 40.102 |
+| **suolo nudo** |  24.5 | 27.2 |
+| **vegetazionesparsa** | 33.7 | 32.7 |
+| **vegetazione densa** | 41.8 | 40.1 |
 
-## GRAFICO CON GGPLOT
-utilizzo il pacchetto `ggplot2` e `patchwork` per realizzare i grafici a barre
+## Grafico a barre della copertura percentuale
+Sono stat utilizzati i pacchetti `ggplot2` e `patchwork` per realizzare e visualizzare i grafici a barre relativi alle diverse coperture in percentuale delle tre classi, prima e dopo l'incendio.
 ```r
-g1 <- ggplot(tab, aes(x = class, y = perc_pre, color = class)) +      #structure
-  geom_bar(stat="identity", fill="white", show.legend = FALSE) +        #grafico a barre; nelle parentesi inserisco (la statistica usata, colore interno delle barre)
+#PRE
+g1 <- ggplot(tab, aes(x = class, y = perc_pre, color = class)) +    
+  geom_bar(stat="identity", fill="white", show.legend = FALSE) +   # grafico a barre, stat="" definisce la statistica da usare
   ylim(c(0,100)) +
   labs(title = "Pre-Incendio", y = "Percentuale (%)") +
-  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
-
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())  # rimuove il testo sotto l'asse x
+#POST
 g2 <- ggplot(tab, aes(x = class, y = perc_post, color = class)) +
   geom_bar(stat="identity", fill="white") +
   ylim(c(0,100)) +
   labs(title = "Pre-Incendio", y = "Percentuale (%)") +
   theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
 
-g1+g2
+g1 + g2   # visualizza i grafici in un unico layout
 ```
+> Grafico comparativo
 <p align="center">
- <img src="img/hist.png" width="600">
+ <img src="img/hist.png" width="700">
 </p>
+
