@@ -277,7 +277,7 @@ Visualizzazione del grafico in False colors
 im.plotRGB(post18, r=4, g=3, b=2, title="2018")
 ```
 <p align="center">
- <img src="img/False18.png" width="400">
+ <img src="img/False2018.png" width="400">
 </p>
 
 ### Indice DVI
@@ -294,7 +294,7 @@ plot(dDVI, col = magma(100), main = "dDVI (Pre - 2018)")
 dev.off()
 ```
 <p align="center">
- <img src="img/dvi2018.png" width="400">
+ <img src="img/dvi2018.png" width="800">
 </p>
 
 ## indice NDVI
@@ -311,5 +311,5 @@ plot(dNDVI, col = magma(100), main = "dNDVI (Pre - 2018)", cex.main = 1.2)
 dev.off()
 ```
 <p align="center">
- <img src="img/ndvi2018.png" width="400">
+ <img src="img/ndvi2018.png" width="800">
 </p>
