@@ -207,8 +207,6 @@ levels(ndvi_post_c) <- data.frame(
 ```
 Visualizzazione dei dati NDVI classificati
 ```r
-im.multiframe(1, 2)
-par(mar = c(1, 3, 1, 3), xpd = TRUE)  # xpd=TRUE evita che il testo venga tagliato
 plot(ndvi_pre_c, main="NDVI Pre", col = c("#FFC107", "#9C27B0", "#2E7D32"), legend = FALSE)  #col=c() per colori personalizzati
 plot(ndvi_post_c, main="NDVI Post", col = c("#FFC107", "#9C27B0", "#2E7D32"), cex.legend = 0.8)
 dev.off()
@@ -258,6 +256,6 @@ g1 + g2   # visualizza i grafici in un unico layout
 ```
 > Grafico comparativo
 <p align="center">
- <img src="img/hist.png" width="700">
+ <img src="img/barre.png" width="700">
 </p>
 
