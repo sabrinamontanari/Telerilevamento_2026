@@ -298,6 +298,9 @@ dev.off()
  <img src="img/ndvi2018.png" width="800">
 </p>
 
+> **Commento:**
+> Nella mappa della differenza di NDVI tra *pre-incendio* e il *2018*, la quasi totalità dell'area bruciata assume colorazioni viola scuro e nero. Queste tonalità > indicano valori negativi, testimoniando matematicamente che l'NDVI del 2023 è superiore a quello del 2022 e confermando così una ripresa positiva dell'ecosistema, con la ricolonizzazione del suolo da parte di nuova vegetazione fotosinteticamente attiva.
+> 
 ## Classificazione NDVI 2018
 ```r
 ndvi_18_c <- im.classify(ndvi_post18, num_clusters = 3, seed=1)
@@ -316,6 +319,9 @@ dev.off()
  <img src="img/class_2018.png" width="800">
 </p>
 
+> **Commento:**
+> S
+> 
 ## Frequenze e percentuali (NDVI 2018)
 ```r
 freq_18 <- freq(ndvi_18_c) 
@@ -336,3 +342,6 @@ Tabella relativa alla copertura percentuale nei tre periodi considerati
 | **vegetazione sparsa**   |  33.7  | 32.7 | 21.2 |
 |  **vegetazione densa**  |   41.8  | 40.1 |  49.6 |
 
+<p align="center">
+ <img src="img/confronto_2018.png" width="800">
+</p>
