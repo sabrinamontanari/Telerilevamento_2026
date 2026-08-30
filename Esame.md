@@ -188,9 +188,9 @@ ndvi_pre_c <- im.classify(ndvi_pre, num_clusters = 3, seed = 1)  # suddivisione 
 ndvi_post_c <- im.classify(ndvi_post, num_clusters = 3, seed = 1)
 ```
 Le tre classi create sono state rinominate attraverso la funzione `levels()`, in base al valore medio di NDVI, in:
- - Suolo Nudo
- - Vegetazione sparsa
- - Vegetazione densa
+  - Suolo Nudo (valori medi prossimi allo 0)
+  - Vegetazione sparsa (valori medi intermedi)
+  - Vegetazione densa (valori medi elevati)
 ```r
 levels(ndvi_pre_c) <- data.frame(
   value = c(1:3),
@@ -314,13 +314,13 @@ dev.off()
 ndvi_18_c <- im.classify(ndvi_post18, num_clusters = 3, seed=1)
 levels(ndvi_18_c) <- data.frame(
     value = c(1:3),
-    label = c("Suolo Nudo","Vegetazione sparsa", "Vegetazione densa")
+    label = c("Vegetazione sparsa", "Suolo Nudo", "Vegetazione densa")
   )
 ```
 Visualizzazione mappa divisa nelle tre classi:
 ```r
 png("class_2018.png", width = 2200, height = 1200, res = 220)
-  plot(ndvi_18_c, main="NDVI 2018", col = c("#FFC107", "#9C27B0", "#2E7D32"), cex.legend = 0.8)
+  plot(ndvi_18_c, main="NDVI 2018", col = c("#9C27B0", "#FFC107", "#2E7D32"), cex.legend = 0.8)
 dev.off()
 ```
 <p align="center">
