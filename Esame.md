@@ -201,10 +201,14 @@ levels(ndvi_post_c) <- data.frame(
   label = c("Suolo Nudo", "Vegetazione sparsa", "Vegetazione densa")
 )
 ```
+Creo una palette di colori da utilizzare nelle mappe:
+```r
+palette <- c("#FFC107", "#9C27B0", "#2E7D32")
+```
 Visualizzazione dei dati NDVI classificati:
 ```r
-plot(ndvi_pre_c, main="NDVI Pre", col = c("#FFC107", "#9C27B0", "#2E7D32"), legend = FALSE)  #col=c() per colori personalizzati
-plot(ndvi_post_c, main="NDVI Post", col = c("#FFC107", "#9C27B0", "#2E7D32"), cex.legend = 0.8)
+plot(ndvi_pre_c, main="NDVI Pre", col = palette, legend = FALSE)
+plot(ndvi_post_c, main="NDVI Post", col = palette, cex.legend = 0.8)
 ```
 <img src="img/ndvi_pre.png" width="49%"/> <img src="img/ndvi_post.png" width="49%"/>
 >**Commento:**
@@ -312,15 +316,21 @@ dev.off()
 ## Classificazione NDVI 2018
 ```r
 ndvi_18_c <- im.classify(ndvi_post18, num_clusters = 3, seed=1)
-levels(ndvi_18_c) <- data.frame(
-    value = c(1:3),
-    label = c("Vegetazione sparsa", "Suolo Nudo", "Vegetazione densa")
-  )
+# Riordino dei valori numerici del raster 2018 (scambio classe 1 e classe 2)
+m_reorder <- matrix(c(1, 2,
+                      2, 1,
+                      3, 3), ncol = 2, byrow = TRUE)
+ndvi_18_c_fixed <- classify(ndvi_18_c, m_reorder)
+
+levels(ndvi_18_fixed) <- data.frame(
+  value = 1:3,
+  label = c("Suolo Nudo", "Vegetazione sparsa", "Vegetazione densa")
+)
 ```
 Visualizzazione mappa divisa nelle tre classi:
 ```r
 png("class_2018.png", width = 2200, height = 1200, res = 220)
-  plot(ndvi_18_c, main="NDVI 2018", col = c("#9C27B0", "#FFC107", "#2E7D32"), cex.legend = 0.8)
+  plot(ndvi_18_c, main="NDVI 2018", col = palette, cex.legend = 0.8)
 dev.off()
 ```
 <p align="center">
