@@ -9,10 +9,10 @@ L'incendio boschivo divampato nell'estate 2017, tra fine agosto e inizio settemb
  <img src="img/montemorrone.jpg" width="700">
 </p>
 
-In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'area dell'Appennino centrale, attraverso immagini satellitari **Sentinel-2** in due momenti temporali:
+In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'area dell'Appennino centrale, attraverso immagini satellitari **Sentinel-2** in tre momenti temporali:
 - Pre-incendio: 1 Luglio 2017 – 15 Agosto 2017 (condizione della vegetazione precedente all'incendio)
 - Post-incendio: 15 Settembre 2017 – 15 Ottobre 2017 (situazione subito dopo l'estinzione del rogo)
-
+- Un anno dopo: Luglio 2018
 > Area di studio (Monte Morrone - Parco della Maiella)
 <p align="center">
  <img src="img/areastudio.png" width="700">
