@@ -421,6 +421,7 @@ tab_ripresa <- data.frame(
 )
 print(tab_ripresa)
 ```
+
 | Classe | Percentuale |
 |:--| :--: | :--:| :--:|
 | Mancata Rigenerazione (Suolo Nudo) | 42.4% |
