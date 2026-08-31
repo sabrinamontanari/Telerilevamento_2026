@@ -363,4 +363,59 @@ Tabella relativa alla copertura percentuale nei tre periodi considerati:
 > **Commento:**
 > Il calcolo delle percentuali di copertura del suolo mostrano, a distanza di un anno dal rogo, una riduzione significativa del suolo nudo nelle aree dell'incendio e un aumento significativo della vegetazione densa, che ha però interessato principalemente il versante non soggetto al rogo del 2017.
 
-# 6. CONCLUSIONI
+# 6. RIGENERAZIONE VEGETAZIONALE (SOLO SU AREA EFFETTIVAMENTE BRUCIATA)
+### - Identificazione solo dell'area bruciata nel 2017
+> uso la funzione ifel() per definire il perimetro esatto del danno
+ Vegetazione prima (> 1) AND Suolo Nudo dopo (== 1)
+> Applicato la logica del ciclo if/else attraverso la funzione vettorializzata `ifel()` del pacchetto `terra`, che permette di lavorare sulla matrice di pixel del raster (lavora su tutti i pixel contemporaneamente). 
+Se la transizione del pixel è da Vegetazione Sparsa (2) o Densa (3) a Suolo Nudo (1), allora assegna al pixel il valore 1 (Bruciato), altrimenti 0 (Non bruciato)
+```r
+area_bruciata <- ifel(ndvi_pre_c > 1 & ndvi_post_c == 1, 1, 0)
+
+png("areabruciata.png", width = 2200, height = 1200, res = 220)
+  plot(area_bruciata, main = "Perimetro area bruciata")
+dev.off()
+```
+<p align="center">
+ <img src="img/areabruciata.png" width="500">
+</p>
+
+- ISOLIAMO IL 2018 SOLO SULLE AREE BRUCIATE
+La funzione `mask()` permette di estrarre la percentuale di ripresa della vegetazione a un anno di distanza. Agisce come una maschera spaziale, permettendo di limitare l'analisi del 2018 solo ed esclusivamente ai pixel dove si è verificato l'incendio nel 2017.
+```r
+ripresa_2018 <- mask(ndvi_18_fixed, area_bruciata, maskvalues = 0) # Mettiamo a NA (valore nullo) tutto ciò che non è incendio
+
+png("ripresa_2018.png", width = 2200, height = 1200, res = 220)
+  plot(ripresa_2018, main = "Rigenerazione area bruciata")
+dev.off()
+```
+<p align="center">
+ <img src="img/ripresa_2018.png" width="800">
+</p>
+
+- CALCOLO DELLE PERCENTUALI DI RIGENERAZIONE
+La funzione sum(freq_ripresa$count) indica i soli pixel bruciati
+
+```r
+freq_ripresa <- freq(ripresa_2018)
+perc_ripresa <- round(freq_ripresa$count * 100 / sum(freq_ripresa$count), 1)
+```
+> Commento: è stata usata sum(freq_ripresa$count) invece di ncell() perché l'immagine è stata mascherata. ncell() restituirebbe il totale dei pixel dell'intera scena raster, mentre a me interessa la percentuale di ripresa calcolata esclusivamente sul totale dei pixel appartenenti all'area bruciata.
+> 
+- Rigenerazione percentuale dell'area dell'incendio dopo un anno:
+```r
+  tab_ripresa <- data.frame(
+  classe = c("Mancata Rigenerazione (Suolo Nudo)", 
+             "Rigenerazione Parziale (Veg. Sparsa)", 
+             "Rigenerazione Completa (Veg. Densa)"),
+  percentuale = perc_ripresa
+)
+print(tab_ripresa)
+```
+| Classe | Percentuale |
+|:--| :--: | :--:| :--:|
+| Mancata Rigenerazione (Suolo Nudo) | 42.4% |
+| Rigenerazione Parziale (Veg. Sparsa) | 43.5% |
+| Rigenerazione Completa (Veg. Densa) | 14.1% |
+
+# 7. CONCLUSIONI
