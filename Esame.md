@@ -294,43 +294,44 @@ plot(ndvi_post18, col = viridis(100), main = "NDVI 2018")
  <img src="img/ndvi2018.png" width="800">
 </p>
 
-Confronto le variazioni multitemporali dNDVI **Pre-2018** e **Post-2018**:
+Confronto le differenze spettrali dell'NDVI tra **Pre vs 2018** (`dNDVI2`) e **Post vs 2018** (`dNDVI3`):
 ``` r
 # PRE-2018
 dNDVI2 <- ndvi_pre - ndvi_post18
 png("pre-2018.png", width = 2200, height = 1200, res = 220)
   plot(dNDVI2, col = magma(100), main = "dNDVI (Pre - 2018)", cex.main = 1.2)
 dev.off()
-# POST -2018
+# POST-2018
 dNDVI3 <- ndvi_post - ndvi_post18
 png("post-2018.png", width = 2200, height = 1200, res = 220)
   plot(dNDVI3, col = magma(100), main = "dNDVI (Post - 2018)", cex.main = 1.2)
 dev.off()
 ```
 > **Commento:**
-> Nella mappa della differenza di NDVI *post incendio - 2018*, la quasi totalità dell'area bruciata assume tonalità scure (valori negativi) che indicano un aumento di vegetazione fotosinteticamente attiva (NDVI_2018 > NDVI_2017).
-> Tuttavia, se il confronto viene fatto con la fase *pre-incendio* (dNDVI pre-2018), l'area interessata dal rogo è rappresentata da colori chiari indici di una ripresa lenta della vegetazione che non ha ancora raggiunto lo stato di salute precedente al rogo.
+> Nella mappa della differenza di NDVI *post incendio - 2018*, la quasi totalità dell'area colpita assume tonalità scure (valori negativi) che indicano un aumento di vegetazione fotosinteticamente attiva (NDVI_2018 > NDVI_2017).
+> Tuttavia, se il confronto viene fatto con la fase *pre-incendio* (dNDVI pre-2018), l'area interessata dal rogo è evidenziata da colori chiari (valori positivi) indici di una ripresa lenta della vegetazione che non ha ancora ripristinato lo stato precedente all'evento.
 
 <img src="img/post-2018.png" width="49%"> <img src="img/pre-2018.png" width="49%">
 
 ## Classificazione NDVI 2018
+Eseguo la classificazione non supervisionata sull'immagine del 2018 per identificare le tre macro-classi di copertura e riordino i cluster per uniformarli alle fasi Pre e Post:
 ```r
-ndvi_18_c <- im.classify(ndvi_post18, num_clusters = 3, seed=1)
-# Riordino dei valori numerici del raster 2018 (scambio classe 1 e classe 2)
+ndvi_18_c <- im.classify(ndvi_post18, num_clusters = 3, seed = 1)
+# Riordino dei valori numerici del raster (scambio classe 1 e classe 2)
 m_reorder <- matrix(c(1, 2,
                       2, 1,
                       3, 3), ncol = 2, byrow = TRUE)
 ndvi_18_fixed <- classify(ndvi_18_c, m_reorder)
-
+# Assegno le etichette
 levels(ndvi_18_fixed) <- data.frame(
   value = 1:3,
   label = c("Suolo Nudo", "Vegetazione sparsa", "Vegetazione densa")
 )
 ```
-Visualizzazione della mappa divisa nelle tre classi:
+Visualizzazione della mappa classificata:
 ```r
 png("class_2018.png", width = 2200, height = 1200, res = 220)
-  plot(ndvi_18_fixed, main="NDVI 2018", col = palette, cex.legend = 0.8)
+  plot(ndvi_18_fixed, main = "NDVI 2018", col = palette, cex.legend = 0.8)
 dev.off()
 ```
 <p align="center">
@@ -338,9 +339,10 @@ dev.off()
 </p>
 
 > **Commento:**
-> Dalla mappa divisa per classi è evidente un parziale aumento della vegetiazione rispetto al periodo *post-incendio*.
+> Dalla mappa classificata del 2018 si osserva un parziale aumento della vegetiazione rispetto al periodo *post-incendio*.
 
-## Frequenze e percentuali (NDVI 2018)
+## Frequenze e percentuali di copertura (NDVI 2018)
+Calcolo la distribuzione percentuale delle tre classi sull'intera immagine raster per tutti i periodi analizzati:
 ```r
 freq_18 <- freq(ndvi_18_fixed) 
 perc_18 <- freq_18$count * 100 / ncell(ndvi_18_fixed)
@@ -361,17 +363,23 @@ Tabella relativa alla copertura percentuale nei tre periodi considerati:
 |  **vegetazione densa**  |   41.8  | 40.1 |  49.6 |
 
 > **Commento:**
-> Il calcolo delle percentuali di copertura del suolo mostrano, a distanza di un anno dal rogo, una riduzione significativa del suolo nudo nelle aree dell'incendio e un aumento significativo della vegetazione densa, che ha però interessato principalemente il versante non soggetto al rogo del 2017.
+> Il calcolo delle percentuali di copertura del suolo sull'intera immagine mostra, a distanza di un anno, una riduzione del suolo nudo e un aumento significativo della vegetazione densa. Tuttavia, questa statistica globale considera anche i versanti non colpiti dal fuoco. Per valutare il reale stato di recupero dell'incendio è necessario isolare spazialmente la sola area bruciata.
 
-# 6. RIGENERAZIONE VEGETAZIONALE (SOLO SU AREA EFFETTIVAMENTE BRUCIATA)
-### - Identificazione solo dell'area bruciata nel 2017
-> uso la funzione ifel() per definire il perimetro esatto del danno
- Vegetazione prima (> 1) AND Suolo Nudo dopo (== 1)
-> Applicato la logica del ciclo if/else attraverso la funzione vettorializzata `ifel()` del pacchetto `terra`, che permette di lavorare sulla matrice di pixel del raster (lavora su tutti i pixel contemporaneamente). 
-Se la transizione del pixel è da Vegetazione Sparsa (2) o Densa (3) a Suolo Nudo (1), allora assegna al pixel il valore 1 (Bruciato), altrimenti 0 (Non bruciato)
+# 6. Analisi della rigenerazione vegetazionale (sola area bruciata)
+Per evitare distorsioni causate da aree non colpite dall'incendio o da suoli nudi permanenti (es. infrastrutture, rocce), è stata condotta la valutazione del recupero ad un anno, esclusivamente all'interno della cicatrice dell'incendio del 2017.
+
+### - Identificazione della sola area bruciata nel 2017
+È stata applicata la logica del ciclo *if/else* attraverso la funzione vettorializzata `ifel()` del pacchetto `terra`, per definire il perimetro esatto del danno.
+Essa permette di lavorare sulla matrice di pixel del raster, estraendo solo i pixel che prima dell'evemto erano vegetati (valore >1) e subito dopo sono diventati suolo nudo (valore ==1)
+>
 ```r
 area_bruciata <- ifel(ndvi_pre_c > 1 & ndvi_post_c == 1, 1, 0)
-
+```
+> **Commento:**
+>  Se la transizione del pixel è da Vegetazione Sparsa (2) o Densa (3) a Suolo Nudo (1), allora assegna al pixel il valore 1 (Bruciato), altrimenti 0 (Non bruciato)
+>
+Visualizzazione dell'area bruciata:
+```r
 png("areabruciata.png", width = 2200, height = 1200, res = 220)
   plot(area_bruciata, main = "Perimetro area bruciata")
 dev.off()
@@ -380,31 +388,32 @@ dev.off()
  <img src="img/areabruciata.png" width="500">
 </p>
 
-- ISOLIAMO IL 2018 SOLO SULLE AREE BRUCIATE
-La funzione `mask()` permette di estrarre la percentuale di ripresa della vegetazione a un anno di distanza. Agisce come una maschera spaziale, permettendo di limitare l'analisi del 2018 solo ed esclusivamente ai pixel dove si è verificato l'incendio nel 2017.
+- Isolamento dello stato della vegetazione nel 2018
+Per limitare l'analisi del 2018 solo ed esclusivamente ai pixel dove si è verificato l'incendio nel 2017, è stata usata la funzione `mask()`.
+Con questa funzione è stata ritagliata la mappa classificata del 2018 (*ndvi_18_fixed*) sovrapponendovi la maschera dell'area bruciata (*area_bruciata*).
+>
+>Tutti i pixel esterni al rogo vengono convertiti in *valori nulli* (NA).
+
 ```r
-ripresa_2018 <- mask(ndvi_18_fixed, area_bruciata, maskvalues = 0) # Mettiamo a NA (valore nullo) tutto ciò che non è incendio
+ripresa_2018 <- mask(ndvi_18_fixed, area_bruciata, maskvalues = 0)  # Mascheramento: si mantengono solo i pixel appartenenti all'area bruciata
 
 png("ripresa_2018.png", width = 2200, height = 1200, res = 220)
-  plot(ripresa_2018, main = "Rigenerazione area bruciata")
+  plot(ripresa_2018, main = "Stato della vegetazione nel 2018 nell'area bruciata")
 dev.off()
 ```
 <p align="center">
  <img src="img/ripresa_2018.png" width="800">
 </p>
 
-- CALCOLO DELLE PERCENTUALI DI RIGENERAZIONE
-La funzione sum(freq_ripresa$count) indica i soli pixel bruciati
-
+- Calcolo delle percentuali di rigenerazione
+Per il calcolo percentuale è stata usata la funzione `sum(freq_ripresa$count)` che conta solo i pixel validi (area bruciata), escludendo dal totale i pixel nulli situati al di fuori della maschera di analisi:
 ```r
 freq_ripresa <- freq(ripresa_2018)
 perc_ripresa <- round(freq_ripresa$count * 100 / sum(freq_ripresa$count), 1)
 ```
-> Commento: è stata usata sum(freq_ripresa$count) invece di ncell() perché l'immagine è stata mascherata. ncell() restituirebbe il totale dei pixel dell'intera scena raster, mentre a me interessa la percentuale di ripresa calcolata esclusivamente sul totale dei pixel appartenenti all'area bruciata.
-> 
-- Rigenerazione percentuale dell'area dell'incendio dopo un anno:
+Tabella riassuntiva:
 ```r
-  tab_ripresa <- data.frame(
+tab_ripresa <- data.frame(
   classe = c("Mancata Rigenerazione (Suolo Nudo)", 
              "Rigenerazione Parziale (Veg. Sparsa)", 
              "Rigenerazione Completa (Veg. Densa)"),
@@ -419,3 +428,8 @@ print(tab_ripresa)
 | Rigenerazione Completa (Veg. Densa) | 14.1% |
 
 # 7. CONCLUSIONI
+L'analisi multitemporale basata sugli indici di vegetazione NDVI ha permesso di quantificare con precisione l'impatto dell'incendio del 2017 e la successiva dinamica di ripristino vegetazionale a distanza di un anno. L’evento, nell'immediato ha causato una drastica transizione delle superfici da copertura forestale a suolo nudo, evidenziato dal crollo dell'INDVI.
+>
+Ad un anno di distanza dall'incendio, il **57.6%** della superficie colpita (somma di vegetazione sparsa 43.5% e densa 14.1%) ha mostrato un processo attivo di ripresa fotosintetica, guidato principalmente dallo sviluppo di vegetazione erbacea e arbustiva di ricolonizzazione (*Vegetazione Sparsa*).
+>
+Il **42.4%** dell'area risulta ancora in uno stato di *Mancata Rigenerazione* (**Suolo Nudo*), evidenziando le zone in cui il danno è stato severo e la risposta della copertura vegetale necessita di tempi di ripristino più lunghi.
