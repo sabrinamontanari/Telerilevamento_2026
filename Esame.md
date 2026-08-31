@@ -320,17 +320,17 @@ ndvi_18_c <- im.classify(ndvi_post18, num_clusters = 3, seed=1)
 m_reorder <- matrix(c(1, 2,
                       2, 1,
                       3, 3), ncol = 2, byrow = TRUE)
-ndvi_18_c_fixed <- classify(ndvi_18_c, m_reorder)
+ndvi_18_fixed <- classify(ndvi_18_c, m_reorder)
 
 levels(ndvi_18_fixed) <- data.frame(
   value = 1:3,
   label = c("Suolo Nudo", "Vegetazione sparsa", "Vegetazione densa")
 )
 ```
-Visualizzazione mappa divisa nelle tre classi:
+Visualizzazione della mappa divisa nelle tre classi:
 ```r
 png("class_2018.png", width = 2200, height = 1200, res = 220)
-  plot(ndvi_18_c, main="NDVI 2018", col = palette, cex.legend = 0.8)
+  plot(ndvi_18_fixed, main="NDVI 2018", col = palette, cex.legend = 0.8)
 dev.off()
 ```
 <p align="center">
@@ -342,8 +342,8 @@ dev.off()
 
 ## Frequenze e percentuali (NDVI 2018)
 ```r
-freq_18 <- freq(ndvi_18_c) 
-perc_18 <- freq_18$count * 100 / ncell(ndvi_18_c)
+freq_18 <- freq(ndvi_18_fixed) 
+perc_18 <- freq_18$count * 100 / ncell(ndvi_18_fixed)
 
 tab <- data.frame(
   class=c("suolo nudo", "vegetazione sparsa", "vegetazione densa"),
@@ -356,11 +356,11 @@ print(tab)
 Tabella relativa alla copertura percentuale nei tre periodi considerati:
 | class | % pre | % post | % 2018 |
 |:--| :--: | :--:| :--:|
-| **suolo nudo**  |   24.5  | 27.2 | 29.2 |
-| **vegetazione sparsa**   |  33.7  | 32.7 | 21.2 |
+| **suolo nudo**  |   24.5  | 27.2 | 21.2 |
+| **vegetazione sparsa**   |  33.7  | 32.7 | 29.2 |
 |  **vegetazione densa**  |   41.8  | 40.1 |  49.6 |
 
 > **Commento:**
-> Il calcolo delle percentuali di copertura del suolo mostrano, a distanza di un anno dal rogo, un aumento significativo della vegetazione densa, che però rimane limitata ad aree circoscritte. Si nota infatti un aumento del suolo nudo, indice di un recupero lento di zone particolarmente degradate.
+> Il calcolo delle percentuali di copertura del suolo mostrano, a distanza di un anno dal rogo, una riduzione significativa del suolo nudo nelle aree dell'incendio e un aumento significativo della vegetazione densa, che ha però interessato principalemente il versante non soggetto al rogo del 2017.
 
 # 6. CONCLUSIONI
