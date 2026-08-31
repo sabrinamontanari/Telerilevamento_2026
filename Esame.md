@@ -356,7 +356,7 @@ tab <- data.frame(
 print(tab)
 ```
 Tabella relativa alla copertura percentuale nei tre periodi considerati:
-| class | % pre | % post | % 2018 |
+| Classe | % pre | % post | % 2018 |
 |:--| :--: | :--:| :--:|
 | **suolo nudo**  |   24.5  | 27.2 | 21.2 |
 | **vegetazione sparsa**   |  33.7  | 32.7 | 29.2 |
@@ -421,9 +421,8 @@ tab_ripresa <- data.frame(
 )
 print(tab_ripresa)
 ```
-
 | Classe | Percentuale |
-|:--| :--: | :--:| :--:|
+|:--| :--: |
 | Mancata Rigenerazione (Suolo Nudo) | 42.4% |
 | Rigenerazione Parziale (Veg. Sparsa) | 43.5% |
 | Rigenerazione Completa (Veg. Densa) | 14.1% |
