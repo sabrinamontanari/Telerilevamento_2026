@@ -108,8 +108,8 @@ dev.off()
 </p>
 
 >**Commento:**
->- Nei grafici della banda del Rosso (B4) si osserva, nella fase Pre-incendio, una bassa riflettanza dovuta al forte assorbimento della luce da parte della clorofilla per la fotosintesi. Nella fase Post-incendio si registra un aumento della riflettanza a causa della scomparsa dei pigmenti fotosintetici e dell'esposizione del suolo bruciato.
->-  Nel grafico del Vicino Infrarosso (B8) viene rilevato in modo più netto l'impatto dell'incendio. Nella fase *Pre-incendio* la vegetazione sana presenta alti valori di riflettanza (aree chiare/gialle) dovuta alla struttura cellulare delle foglie, mentre nella fase *Post-incendio* si osserva un crollo della riflettanza (area scura/viola), causato dalla perdita di biomassa fotosinteticamente attiva e dalla presenza di cenere/suolo bruciato.
+>- Nei grafici della banda del Rosso (B4) si osserva, nella fase *Pre-incendio*, una bassa riflettanza dovuta al forte assorbimento della luce da parte della clorofilla per la fotosintesi. Nella fase *Post-incendio* si registra un aumento della riflettanza a causa della scomparsa dei pigmenti fotosintetici e dell'esposizione del suolo bruciato.
+>-  Nel grafico del Vicino Infrarosso (B8) viene rilevato in modo più netto l'impatto dell'incendio. Nella fase *Pre-incendio* la vegetazione sana presenta alti valori di riflettanza (aree chiare/gialle) dovuti alla struttura cellulare delle foglie, mentre nella fase *Post-incendio* si osserva un crollo della riflettanza (area scura/viola), causato dalla perdita di biomassa fotosinteticamente attiva e dalla presenza di cenere/suolo bruciato.
 
 # 4. Calcolo degli inidici vegetazionali 🌿
 
