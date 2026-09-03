@@ -270,7 +270,7 @@ Visualizzazione del grafico in False colors:
 ```r
 im.plotRGB(post18, r=4, g=3, b=2, title="False colors 2018")
 ```
- <img src="img/2018.png" width="40%"> ,  <img src="img/False2018.png" width="40%">
+ <img src="img/2018.png" width="40%">      <img src="img/False2018.png" width="40%">
 
 ### Indice DVI
 È stato calcolato l'indice DVI per il 2018 e la variazione multitemporale rispetto alla fase pre-incendio (`dDVI2`):
