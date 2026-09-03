@@ -348,7 +348,7 @@ dev.off()
 </p>
 
 > **Commento:**
-> Dalla mappa classificata del 2018 si osserva un parziale aumento della vegetiazione rispetto al periodo *post-incendio*.
+> Dalla mappa classificata del 2018 si osserva un parziale aumento della vegetazione rispetto al periodo *post-incendio*.
 
 ## Frequenze e percentuali di copertura (NDVI 2018)
 È stata calcolata la copertura percentuale delle tre classi, sull'intera immagine raster, per tutti i periodi analizzati:
