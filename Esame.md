@@ -380,7 +380,7 @@ Per evitare distorsioni causate da aree non colpite dall'incendio o da suoli nud
 
 ### - Identificazione della sola area bruciata nel 2017 🔥
 È stata applicata la logica del ciclo *if/else* attraverso la funzione vettorializzata `ifel()` del pacchetto `terra`, per definire il perimetro esatto del danno.
-Essa permette di lavorare sulla matrice di pixel del raster, estraendo solo i pixel che prima dell'evemto erano vegetati (valore >1) e subito dopo sono diventati suolo nudo (valore ==1)
+Essa permette di lavorare sulla matrice di pixel del raster, estraendo solo i pixel che prima dell'evento erano vegetati (valore >1) e subito dopo sono diventati suolo nudo (valore ==1)
 >
 ```r
 area_bruciata <- ifel(ndvi_pre_c > 1 & ndvi_post_c == 1, 1, 0)
