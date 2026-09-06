@@ -238,11 +238,11 @@ tab <- data.frame(
 Sono stati utilizzati i pacchetti `ggplot2` e `patchwork` per realizzare e visualizzare i grafici a barre relativi alle diverse coperture in percentuale delle tre classi, prima e dopo l'incendio.
 ```r
 #Pre
-g1 <- ggplot(tab, aes(x = class, y = perc_pre, color = class)) +    
-  geom_bar(stat = "identity", fill = "white", show.legend = FALSE) +        # grafico a barre, stat="" definisce la statistica da usare
-  ylim(c(0, 100)) +
-  labs(title = "Pre-Incendio", y = "Percentuale (%)") +
-  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())  # rimuove il testo sotto l'asse x
+g1 <- ggplot(tab, aes(x = class, y = perc_pre, color = class)) +         # Imposta dati ed estetica di base
+  geom_bar(stat = "identity", fill = "white", show.legend = FALSE) +     # grafico a barre
+  ylim(c(0, 100)) +                                                      # imposta i limiti dell'asse y
+  labs(title = "Pre-Incendio", y = "Percentuale (%)") +                  # aggiunge titolo ed etichetta asse y
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())   # rimuove l'etichetta e le tacche dell'asse x
 #Post
 g2 <- ggplot(tab, aes(x = class, y = perc_post, color = class)) +
   geom_bar(stat = "identity", fill = "white") +
