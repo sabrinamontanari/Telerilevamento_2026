@@ -374,8 +374,8 @@ Tabella relativa alla copertura percentuale nei tre periodi considerati:
 > Il calcolo delle percentuali di copertura del suolo sull'intera immagine mostra, a distanza di un anno, una riduzione del suolo nudo e un aumento significativo della vegetazione densa.
 >
 > ⚠ Tuttavia, questa statistica globale considera anche i versanti non colpiti dal fuoco. Per valutare il reale stato di recupero dell'incendio è necessario isolare spazialmente la sola area bruciata.
-
-# 6. Analisi della rigenerazione vegetazionale (sola area bruciata) 🌳
+>
+# 6. Analisi della rigenerazione vegetazionale (sola area bruciata)
 Per evitare distorsioni causate da aree non colpite dall'incendio o da suoli nudi permanenti (es. infrastrutture, rocce), è stata condotta la valutazione del recupero ad un anno, esclusivamente all'interno della cicatrice dell'incendio del 2017.
 
 ### - Identificazione della sola area bruciata nel 2017 🔥
