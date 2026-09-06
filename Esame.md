@@ -187,7 +187,7 @@ par(mar = c(3, 3, 3, 1))
 ## Classificazione dei dati NDVI
 Per visualizzare il tipo di copertura del suolo e la sua variazione dopo l'evento incendiario, è stata effettuata una classificazione *non supervisionata* della mappa. A tal fine, è stata utilizzata la funzione `im.classify()` del pacchetto `imageRy`, che suddivide i pixel in tre gruppi coerenti dal punto di vista spettrale (`num_clusters = 3`):
 ```r
-ndvi_pre_c <- im.classify(ndvi_pre, num_clusters = 3, seed = 1)  # suddivisione dei pixel in tre *clusters*
+ndvi_pre_c <- im.classify(ndvi_pre, num_clusters = 3, seed = 1)  # suddivisione dei pixel in tre clusters
 ndvi_post_c <- im.classify(ndvi_post, num_clusters = 3, seed = 1)
 ```
 Le tre classi create sono state rinominate attraverso la funzione `levels()`, in base al **valore medio di NDVI**, in:
@@ -204,7 +204,7 @@ levels(ndvi_post_c) <- data.frame(
   label = c("Suolo Nudo", "Vegetazione sparsa", "Vegetazione densa")
 )
 ```
-Creo una palette di colori da utilizzare nelle mappe:
+Creazione di una palette di colori da utilizzare nelle mappe:
 ```r
 palette <- c("#FFC107", "#9C27B0", "#2E7D32")
 ```
