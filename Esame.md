@@ -115,7 +115,7 @@ dev.off()
 
 ## Indice DVI
 L'indice spettrale DVI (*Difference Vegetation Index*) permette di stimare la quantità della biomassa vegetale, calcolando la differenza algebrica tra la riflettanza nel Vicino Infrarosso (NIR) e la riflettanza nel Rosso (RED).
-> Alti valori di DVI sono indici di una vegetazione sana e densa (alta riflettanza dell'infrarosso).
+> Alti valori di DVI sono indici di una vegetazione sana e densa (alta riflettanza nel NIR e bassa nel RED).
 >
 $$
 DVI = NIR - RED
