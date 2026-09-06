@@ -259,7 +259,7 @@ g1 + g2   # visualizza i grafici in un unico layout
 </p>
 
 # 5. Analisi dopo un anno dall'incendio - Luglio 2018
-Per studiare se la vegetazione sia tornata al suo stato di salute originale (pre-incendio), è stata analizzata un'immagine satellitare corrispondente al periodo di luglio 2018.
+Per studiare se la vegetazione sia tornata allo stato di salute precedente all'incendio (luglio 2017), è stata analizzata un'immagine satellitare corrispondente al periodo di luglio 2018.
 Il procedimento è identico a quello precedente:
 
 ### Importazione e analisi dell'immagine
@@ -322,18 +322,18 @@ dev.off()
 <img src="img/post-2018.png" width="49%"> <img src="img/pre-2018.png" width="49%">
 
 ## Classificazione NDVI 2018
-È stat eseguita la classificazione non supervisionata sull'immagine del 2018 per identificare le tre macro-classi di copertura:
+È stata eseguita la classificazione non supervisionata sull'immagine del 2018 per identificare le tre macro-classi di copertura:
 ```r
 ndvi_18_c <- im.classify(ndvi_post18, num_clusters = 3, seed = 1)
 ```
-Successivamente, poichè i cluster risultavano invertiti, sono stati riordinati per uniformarli tra le fasi Pre e Post-evento, utilizzando la funzione di Base R `matrix()` e la funzione `classify()` del pacchetto `terra`:
+Successivamente, poichè i clusters risultavano invertiti, sono stati riordinati per uniformarli tra le fasi Pre e Post-evento, utilizzando la funzione di Base R `matrix()` e la funzione `classify()` del pacchetto `terra`:
 ```r
 m_reorder <- matrix(c(1, 2,                         # matrice di riclassificazione: riordina i valori numerici del raster
                       2, 1,                         # inverte la classe 1 e la classe 2
                       3, 3), ncol = 2, byrow = TRUE)
-ndvi_18_fixed <- classify(ndvi_18_c, m_reorder)     # applica la matrice (m_reorder) al raster di partenza (ndvi_18_c).
+ndvi_18_fixed <- classify(ndvi_18_c, m_reorder)     # applica la matrice (m_reorder) al raster classificato (ndvi_18_c).
 
-levels(ndvi_18_fixed) <- data.frame(                # Rinomino le classi
+levels(ndvi_18_fixed) <- data.frame(                # Rinomina le classi
   value = 1:3,
   label = c("Suolo Nudo", "Vegetazione sparsa", "Vegetazione densa")
 )
@@ -368,12 +368,13 @@ print(tab)
 Tabella relativa alla copertura percentuale nei tre periodi considerati:
 | Classe | % pre | % post | % 2018 |
 |:--| :--: | :--:| :--:|
-| **suolo nudo**  |   24.5  | 27.2 | 21.2 |
-| **vegetazione sparsa**   |  33.7  | 32.7 | 29.2 |
-|  **vegetazione densa**  |   41.8  | 40.1 |  49.6 |
+| **Suolo nudo**  |   24.5  | 27.2 | 21.2 |
+| **Vegetazione sparsa**   |  33.7  | 32.7 | 29.2 |
+|  **Vegetazione densa**  |   41.8  | 40.1 |  49.6 |
 
 > **Commento:**
 > Il calcolo delle percentuali di copertura del suolo sull'intera immagine mostra, a distanza di un anno, una riduzione del suolo nudo e un aumento significativo della vegetazione densa.
+>
 > ⚠ Tuttavia, questa statistica globale considera anche i versanti non colpiti dal fuoco. Per valutare il reale stato di recupero dell'incendio è necessario isolare spazialmente la sola area bruciata.
 
 # 6. Analisi della rigenerazione vegetazionale (sola area bruciata) 🌳
