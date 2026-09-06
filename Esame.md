@@ -315,11 +315,9 @@ png("post-2018.png", width = 2200, height = 1200, res = 220)
   plot(dNDVI3, col = magma(100), main = "dNDVI (Post - 2018)", cex.main = 1.2)
 dev.off()
 ```
-> **Commento:**
-> Nella mappa della differenza di NDVI *Post - 2018*, la quasi totalità dell'area colpita assume tonalità scure (valori negativi) che indicano un aumento di vegetazione fotosinteticamente attiva (NDVI_2018 > NDVI_2017).
-> Tuttavia, se il confronto viene fatto con la fase *pre-incendio* (dNDVI Pre-2018), l'area interessata dal rogo è evidenziata da colori chiari (valori positivi) indici di una ripresa lenta della vegetazione che non ha ancora ripristinato lo stato precedente all'evento.
-
 <img src="img/post-2018.png" width="49%"> <img src="img/pre-2018.png" width="49%">
+> **Commento:**
+> Nella mappa della differenza di NDVI *Post - 2018*, la quasi totalità dell'area colpita assume tonalità scure (valori negativi) che indicano un aumento di vegetazione fotosinteticamente attiva (NDVI_2018 > NDVI_2017). Tuttavia, se il confronto viene fatto con la fase *pre-incendio* (dNDVI Pre-2018), l'area interessata dal rogo è evidenziata da colori chiari (valori positivi) indici di una ripresa lenta della vegetazione che non ha ancora ripristinato lo stato precedente all'evento.
 
 ## Classificazione NDVI 2018
 È stata eseguita la classificazione non supervisionata sull'immagine del 2018 per identificare le tre macro-classi di copertura:
