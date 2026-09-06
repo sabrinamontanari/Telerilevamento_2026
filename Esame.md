@@ -41,14 +41,14 @@ library(patchwork) # Per unire più grafici in un unico layout
 ```
 ### Importazione delle immagini
 Per importare i dati è stata utilizzata la funzione `rast()` del pacchetto `terra` e le immagini sono state rinominate:
-> I raster caricati presenta le bande spettrali disposte secondo la sequenza: [B2: Blu, B3: Verde, B4: Rosso, B8: NIR]
+> I raster caricati presentano le bande spettrali disposte secondo la sequenza: [B2: Blu, B3: Verde, B4: Rosso, B8: NIR]
 ```r
 pre <- rast("sentinel2_median_2026_pre.tif")
 plot(pre)
 ```
 > Immagine prima dell'incendio nelle 4 bande
 <p align="center">
- <img src="img/PRE.png" width="400">
+ <img src="img/PRE.png" width="500">
 </p>
 
 ```r
@@ -57,7 +57,7 @@ plot(post)
 ```
 > Immagine dopo l'incendio nelle 4 bande
 <p align="center">
- <img src="img/POST.png" width="400">
+ <img src="img/POST.png" width="500">
 </p>
 
 ### Analisi esplorativa
