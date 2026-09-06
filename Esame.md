@@ -61,8 +61,8 @@ plot(post)
 </p>
 
 ### Analisi esplorativa
-### - Visualizzazione delle immagini in RGB (colori reali)
-Per farlo utilizzo la funzione `im.plotRGB()` del pacchetto `imageRy`:
+### - Visualizzazione delle immagini in RGB
+Per visualizzare l'immagine in **colori reali** è stata usata la funzione `im.plotRGB()` del pacchetto `imageRy`:
 ```r
 im.multiframe(1, 2)  # visualizza due grafici sulla stessa riga
  im.plotRGB(pre, r=3, g=2, b=1, title="pre-indendio")
