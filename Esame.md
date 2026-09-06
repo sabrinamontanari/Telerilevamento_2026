@@ -6,7 +6,7 @@ L'incendio boschivo divampato nell'estate 2017, tra fine agosto e inizio settemb
 
  > Monte Morrone
 <p align="center">
- <img src="img/montemorrone.jpg" width="700">
+ <img src="img/montemorrone.jpg" width="600">
 </p>
 
 In questo progetto analizziamo l'impatto dell'incendio sulla vegetazione nell'area dell'Appennino centrale, attraverso immagini satellitari **Sentinel-2** in tre momenti temporali:
